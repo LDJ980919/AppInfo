@@ -1,4 +1,4 @@
-package cn.appsys.entity;
+package cn.appsys.pojo;
 
 import java.util.Date;
 /**
@@ -24,11 +24,11 @@ public class data_dictionary {
 	 */
 	private Integer valueId;
 	/**
-	 * 值名称
+	 * 值名�?
 	 */
 	private String valueName;
 	/**
-	 * 创建者
+	 * 创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -36,7 +36,7 @@ public class data_dictionary {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新者
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**

@@ -1,4 +1,4 @@
-package cn.appsys.entity;
+package cn.appsys.pojo;
 
 import java.util.Date;
 /**
@@ -24,7 +24,7 @@ public class app_category {
 	 */
 	private Integer parentId;
 	/**
-	 *创建者
+	 *创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -32,7 +32,7 @@ public class app_category {
 	 */
 	private Date creationTime;
 	/**
-	 * 更新者
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**

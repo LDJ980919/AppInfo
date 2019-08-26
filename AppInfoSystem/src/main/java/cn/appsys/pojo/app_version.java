@@ -1,4 +1,4 @@
-package cn.appsys.entity;
+package cn.appsys.pojo;
 
 import java.util.Date;
 /**
@@ -16,7 +16,7 @@ public class app_version {
 	 */
 	private Integer appId;
 	/**
-	 * 版本号
+	 * 版本�?
 	 */
 	private String versionNo;
 	/**
@@ -24,7 +24,7 @@ public class app_version {
 	 */
 	private String versionInfo;
 	/**
-	 * 发布状态
+	 * 发布状�??
 	 */
 	private Integer publishStatus;
 	/**
@@ -36,7 +36,7 @@ public class app_version {
 	 */
 	private Double versionSize;
 	/**
-	 * 创建者
+	 * 创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -44,7 +44,7 @@ public class app_version {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新者
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**

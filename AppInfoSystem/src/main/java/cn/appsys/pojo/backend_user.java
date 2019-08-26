@@ -1,4 +1,4 @@
-package cn.appsys.entity;
+package cn.appsys.pojo;
 
 import java.util.Date;
 /**
@@ -16,7 +16,7 @@ public class backend_user {
 	 */
 	private String userCode;
 	/**
-	 * 用户名
+	 * 用户�?
 	 */
 	private String userName;
 	/**
@@ -24,7 +24,7 @@ public class backend_user {
 	 */
 	private int userType;
 	/**
-	 * 创建者
+	 * 创建�?
 	 */
 	private int createdBy;
 	/**
@@ -32,7 +32,7 @@ public class backend_user {
 	 */
 	private Date creatuibDate;
 	/**
-	 * 更新者
+	 * 更新�?
 	 */
 	private int modifyBy;
 	/**

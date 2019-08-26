@@ -1,4 +1,4 @@
-package cn.appsys.entity;
+package cn.appsys.pojo;
 
 import java.util.Date;
 /**
@@ -20,7 +20,7 @@ public class ad_promotion {
 	 */
 	private String adPicPath;
 	/**
-	 * 页面浏览量
+	 * 页面浏览�?
 	 */
 	private Integer adPV;
 	/**
@@ -28,7 +28,7 @@ public class ad_promotion {
 	 */
 	private Integer carouselPosition;
 	/**
-	 * 开始时间
+	 * �?始时�?
 	 */
 	private Date startTime;
 	/**
@@ -36,7 +36,7 @@ public class ad_promotion {
 	 */
 	private Date endTime;
 	/**
-	 * 创建者
+	 * 创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -44,7 +44,7 @@ public class ad_promotion {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新者
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**

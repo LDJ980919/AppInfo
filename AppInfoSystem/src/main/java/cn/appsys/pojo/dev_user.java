@@ -1,8 +1,8 @@
-package cn.appsys.entity;
+package cn.appsys.pojo;
 
 import java.util.Date;
 /**
- * 开发者用户
+ * �?发�?�用�?
  * @author ldj
  *
  */
@@ -28,11 +28,11 @@ public class dev_user {
 	 */
 	private String devEmail;
 	/**
-	 * 开发信息
+	 * �?发信�?
 	 */
 	private String devInfo;
 	/**
-	 * 创建者
+	 * 创建�?
 	 */
 	private int createdBy;
 	/**
@@ -40,7 +40,7 @@ public class dev_user {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新者
+	 * 更新�?
 	 */
 	private int modifyBy;
 	/**

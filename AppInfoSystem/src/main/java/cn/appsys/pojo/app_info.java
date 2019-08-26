@@ -1,8 +1,8 @@
-package cn.appsys.entity;
+package cn.appsys.pojo;
 
 import java.util.Date;
 /**
- * app基础信息表
+ * app基础信息�?
  * @author ldj
  *
  */
@@ -36,7 +36,7 @@ public class app_info {
 	 */
 	private Date updateDate;
 	/**
-	 * 开发者用户id
+	 * �?发�?�用户id
 	 */
 	private Integer devId;
 	/**
@@ -44,7 +44,7 @@ public class app_info {
 	 */
 	private String appInfo;
 	/**
-	 * 状态
+	 * 状�??
 	 */
 	private Integer status;
 	/**
@@ -60,7 +60,7 @@ public class app_info {
 	 */
 	private Integer flatformId;
 	/**
-	 * 种类三
+	 * 种类�?
 	 */
 	private Integer categoryLevel3;
 	/**
@@ -68,7 +68,7 @@ public class app_info {
 	 */
 	private Integer downloads;
 	/**
-	 * 创建者
+	 * 创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -76,7 +76,7 @@ public class app_info {
 	 */
 	private Date creationDate;
 	/**
-	 * 更改者
+	 * 更改�?
 	 */
 	private Integer modifyBy;
 	/**
@@ -84,19 +84,19 @@ public class app_info {
 	 */
 	private Date modifyDate;
 	/**
-	 * 种类一
+	 * 种类�?
 	 */
 	private Integer categoryLevel1;
 	/**
-	 * 种类二
+	 * 种类�?
 	 */
 	private Integer categoryLevel2;
 	/**
-	 * 标志的图片路径
+	 * 标志的图片路�?
 	 */
 	private String logoPicPath;
 	/**
-	 * 标志的本地路径
+	 * 标志的本地路�?
 	 */
 	private String logoLocPath;
 	/**
