@@ -6,7 +6,7 @@ import java.util.Date;
  * @author ldj
  *
  */
-public class DackendUser {
+public class BackendUser {
 	/**
 	 * id
 	 */

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "mybatis.org//DTD" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.appsys.dao">
-	<!-- 用户登入 -->
+<mapper namespace="cn.appsys.dao.UserMapper">
+	<!-- 用户登入查询 -->
+	<select id="getDevUserLogin" parameterType="DevUser" resultType="Integer">
+		select * from dev_user where devCode=#{devCode} and devPassword=#{devPassword}
+	</select>
+	<!-- 查询所有用户-->
 	<select id="getUserList" parameterType="DevUser" resultType="DevUser">
 		select * from dev_user 
 		<where>
-			devCode=#{devCode} and devPassword=#{devPassword}
+		<if test="id!=null and id!=''">
+			id=#{id}
+		</if>
 		</where>
 	</select>
 	<!-- 用户注册 -->

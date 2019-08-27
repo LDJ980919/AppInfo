@@ -1,5 +1,7 @@
 package cn.appsys.service;
 
+import java.util.List;
+
 import cn.appsys.pojo.DevUser;
 /**
  * 业务逻辑层
@@ -9,9 +11,15 @@ import cn.appsys.pojo.DevUser;
 public interface UserService {
 	/**
 	 * 用户登入
+	 * @param devCode
 	 * @return
 	 */
-	public DevUser getUserList(DevUser user);
+	public Integer getDevUserLogin(DevUser user);
+	/**
+	 * 查询所有用户
+	 * @return
+	 */
+	public List<DevUser> getUserList(DevUser user);
 	/**
 	 * 用户注册
 	 * @param user

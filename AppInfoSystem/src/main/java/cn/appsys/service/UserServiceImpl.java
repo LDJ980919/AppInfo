@@ -1,5 +1,7 @@
 package cn.appsys.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,9 +21,17 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 	/**
 	 * 用户登入
+	 * @param devCode
 	 * @return
 	 */
-	public DevUser getUserList(DevUser user) {
+	public Integer getDevUserLogin(DevUser user){
+		return userMapper.getDevUserLogin(user);
+	}
+	/**
+	 * 查询所有用户
+	 * @return
+	 */
+	public List<DevUser> getUserList(DevUser user) {
 		return userMapper.getUserList(user);
 	}
 	/**
