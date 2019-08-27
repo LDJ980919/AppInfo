@@ -6,10 +6,10 @@
   		select * from beckend_user 
   		<where>
   			<if test="userCode!=null and userCode!=''">
-  				userCode=#{userCode} and
+  			and	userCode=#{userCode} 
   			</if>
   			<if test="userPassword!=null and userPassword!=''">
-  				userPassword=#{userPassword} and
+  			and	userPassword=#{userPassword} 
   			</if>
   		</where>
   	</select>
