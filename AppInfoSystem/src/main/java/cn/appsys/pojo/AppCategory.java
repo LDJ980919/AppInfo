@@ -6,7 +6,7 @@ import java.util.Date;
  * @author ldj
  *
  */
-public class app_category {
+public class AppCategory {
 	/**
 	 * id
 	 */
@@ -24,7 +24,7 @@ public class app_category {
 	 */
 	private Integer parentId;
 	/**
-	 *创建�?
+	 *创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -32,7 +32,7 @@ public class app_category {
 	 */
 	private Date creationTime;
 	/**
-	 * 更新�?
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**

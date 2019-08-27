@@ -6,7 +6,7 @@ import java.util.Date;
  * @author ldj
  *
  */
-public class app_version {
+public class AppVersion {
 	/**
 	 * id
 	 */
@@ -16,7 +16,7 @@ public class app_version {
 	 */
 	private Integer appId;
 	/**
-	 * 版本�?
+	 * 版本�?
 	 */
 	private String versionNo;
 	/**
@@ -24,7 +24,7 @@ public class app_version {
 	 */
 	private String versionInfo;
 	/**
-	 * 发布状�??
+	 * 发布状�??
 	 */
 	private Integer publishStatus;
 	/**
@@ -36,7 +36,7 @@ public class app_version {
 	 */
 	private Double versionSize;
 	/**
-	 * 创建�?
+	 * 创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -44,7 +44,7 @@ public class app_version {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新�?
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**

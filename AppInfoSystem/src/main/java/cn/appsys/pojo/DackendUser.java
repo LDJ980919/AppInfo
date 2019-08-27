@@ -6,7 +6,7 @@ import java.util.Date;
  * @author ldj
  *
  */
-public class backend_user {
+public class DackendUser {
 	/**
 	 * id
 	 */
@@ -16,7 +16,7 @@ public class backend_user {
 	 */
 	private String userCode;
 	/**
-	 * 用户�?
+	 * 用户�?
 	 */
 	private String userName;
 	/**
@@ -24,7 +24,7 @@ public class backend_user {
 	 */
 	private int userType;
 	/**
-	 * 创建�?
+	 * 创建�?
 	 */
 	private int createdBy;
 	/**
@@ -32,7 +32,7 @@ public class backend_user {
 	 */
 	private Date creatuibDate;
 	/**
-	 * 更新�?
+	 * 更新�?
 	 */
 	private int modifyBy;
 	/**

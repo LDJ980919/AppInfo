@@ -6,7 +6,7 @@ import java.util.Date;
  * @author ldj
  *
  */
-public class data_dictionary {
+public class DataDictionary {
 	/**
 	 * id
 	 */
@@ -24,11 +24,11 @@ public class data_dictionary {
 	 */
 	private Integer valueId;
 	/**
-	 * 值名�?
+	 * 值名�?
 	 */
 	private String valueName;
 	/**
-	 * 创建�?
+	 * 创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -36,7 +36,7 @@ public class data_dictionary {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新�?
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**

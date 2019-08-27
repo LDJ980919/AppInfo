@@ -2,11 +2,11 @@ package cn.appsys.pojo;
 
 import java.util.Date;
 /**
- * �?发�?�用�?
+ * �?发�?�用�?
  * @author ldj
  *
  */
-public class dev_user {
+public class DevUser {
 	/**
 	 * id
 	 */
@@ -28,11 +28,11 @@ public class dev_user {
 	 */
 	private String devEmail;
 	/**
-	 * �?发信�?
+	 * �?发信�?
 	 */
 	private String devInfo;
 	/**
-	 * 创建�?
+	 * 创建�?
 	 */
 	private int createdBy;
 	/**
@@ -40,7 +40,7 @@ public class dev_user {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新�?
+	 * 更新�?
 	 */
 	private int modifyBy;
 	/**

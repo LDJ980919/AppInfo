@@ -6,7 +6,7 @@ import java.util.Date;
  * @author ldj
  *
  */
-public class ad_promotion {
+public class AdPromotion {
 	/**
 	 * id
 	 */
@@ -20,7 +20,7 @@ public class ad_promotion {
 	 */
 	private String adPicPath;
 	/**
-	 * 页面浏览�?
+	 * 页面浏览�?
 	 */
 	private Integer adPV;
 	/**
@@ -28,7 +28,7 @@ public class ad_promotion {
 	 */
 	private Integer carouselPosition;
 	/**
-	 * �?始时�?
+	 * �?始时�?
 	 */
 	private Date startTime;
 	/**
@@ -36,7 +36,7 @@ public class ad_promotion {
 	 */
 	private Date endTime;
 	/**
-	 * 创建�?
+	 * 创建�?
 	 */
 	private Integer createdBy;
 	/**
@@ -44,7 +44,7 @@ public class ad_promotion {
 	 */
 	private Date creationDate;
 	/**
-	 * 更新�?
+	 * 更新�?
 	 */
 	private Integer modifyBy;
 	/**
