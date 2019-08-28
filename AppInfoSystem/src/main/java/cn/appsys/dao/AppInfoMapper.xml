@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.appsys.dao.AppInfoMapper">
+	<resultMap type="AppInfo" id="app_idc">
+		<result column="statusName" property="appStatus"/>
+		<result column="flatformName" property="appFlatform"/>
+		<result column="categoryLevel1Name" property="appCategoryName1"/>
+		<result column="categoryLevel2Name" property="appCategoryName2"/>
+		<result column="categoryLevel3Name" property="appCategoryName3"/>
+	</resultMap>
+	<!-- 查询 -->
+	<select id="getAppInfoList" parameterType="AppInfo" resultMap="app_idc">
+		select *,
+		(select valueName from data_dictionary d where  a.status=d.id AND d.typeCode='1') as statusName,
+		(select valueName from data_dictionary d where  a.flatformId=d.id AND d.typeCode='2') as flatformName,
+		(select categoryName from app_category c where  c.id=a.categoryLevel1) as categoryLevel1Name,
+		(select categoryName from app_category c where  c.id=a.categoryLevel2) as categoryLevel2Name,
+		(select categoryName from app_category c where  c.id=a.categoryLevel3) as categoryLevel3Name
+		from app_info a
+		<where>
+			<if test="softwareName!=null and softwareName!=''">
+				and softwareName like concat('%',#{softwareName},'%')
+			</if>
+			<if test="status!=null">
+				and status = #{status}
+			</if>
+			<if test="flatformId!=null">
+				and flatformId = #{flatformId}
+			</if>
+			<if test="categoryLevel1!=null">
+				and categoryLevel1 = #{categoryLevel1}
+			</if>
+			<if test="categoryLevel2!=null">
+				and categoryLevel2 = #{categoryLevel2}
+			</if>
+			<if test="categoryLevel3!=null">
+				and categoryLevel3 = #{categoryLevel3}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 增加 -->
+	<insert id="addAppInfo" parameterType="AppInfo">
+		insert into app_info
+		(softwareName,APKName,supportROM,interfaceLanguage,softwareSize,downloads,flatformId,
+		categoryLevel1,categoryLevel2,categoryLevel3,status,appInfo,logoPicPath)
+		values
+		(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},#{softwareSize},#{downloads},#{flatformId},
+		#{categoryLevel1},#{categoryLevel2},#{categoryLevel3},#{status},#{appInfo},#{logoPicPath})
+	</insert>
+	
+	<!-- 改 -->
+	<update id="updateAppInfo" parameterType="AppInfo">
+		update app_info
+		set softwareName = #{softwareName},
+			APKName = #{APKName},
+			supportROM = #{supportROM},
+			interfaceLanguage = #{interfaceLanguage},
+			softwareSize = #{softwareSize},
+			downloads = #{downloads},
+			flatformId = #{flatformId},
+			categoryLevel1 = #{categoryLevel1},
+			categoryLevel2 = #{categoryLevel2},
+			categoryLevel3 = #{categoryLevel3},
+			status = #{status},
+			appInfo = #{appInfo},
+			logoPicPath = #{logoPicPath}
+		where id = #{id}
+	</update>
+</mapper>
