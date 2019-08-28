@@ -103,6 +103,26 @@ public class AppInfo {
 	 * 版本id
 	 */
 	private Integer versionId;
+	/**
+	 * app查询字典的状态
+	 */
+	private String appStatus;
+	/**
+	 * app查询字典的平台
+	 */
+	private String appFlatform;
+	/**
+	 * app查询一级分类名称
+	 */
+	private String appCategoryName1;
+	/**
+	 * app查询二级分类名称
+	 */
+	private String appCategoryName2;
+	/**
+	 * app查询三级分类名称
+	 */
+	private String appCategoryName3;
 	
 	public Integer getId() {
 		return id;
@@ -248,5 +268,35 @@ public class AppInfo {
 	public void setVersionId(Integer versionId) {
 		this.versionId = versionId;
 	}
-
+	public String getAppStatus() {
+		return appStatus;
+	}
+	public void setAppStatus(String appStatus) {
+		this.appStatus = appStatus;
+	}
+	public String getAppFlatform() {
+		return appFlatform;
+	}
+	public void setAppFlatform(String appFlatform) {
+		this.appFlatform = appFlatform;
+	}
+	public String getAppCategoryName1() {
+		return appCategoryName1;
+	}
+	public void setAppCategoryName1(String appCategoryName1) {
+		this.appCategoryName1 = appCategoryName1;
+	}
+	public String getAppCategoryName2() {
+		return appCategoryName2;
+	}
+	public void setAppCategoryName2(String appCategoryName2) {
+		this.appCategoryName2 = appCategoryName2;
+	}
+	public String getAppCategoryName3() {
+		return appCategoryName3;
+	}
+	public void setAppCategoryName3(String appCategoryName3) {
+		this.appCategoryName3 = appCategoryName3;
+	}
+	
 }
