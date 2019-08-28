@@ -28,6 +28,11 @@ public class AppCategory {
 	 */
 	private Integer createdBy;
 	/**
+	 * 分类的类型
+	 */
+	private Integer type;
+	
+	/**
 	 * 创建时间
 	 */
 	private Date creationTime;
@@ -87,6 +92,12 @@ public class AppCategory {
 	}
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
 	}
 
 }

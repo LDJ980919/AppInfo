@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>app开发者登陆系统 </title>
+    <title>app开发者注册系统 </title>
 
     <!-- Bootstrap core CSS -->
 
@@ -36,41 +36,48 @@
         <![endif]-->
 
 </head>
-
 <body style="background:#F9F9F9;">
-    
-    <div class="">
+<div class="">
         <a class="hiddenanchor" id="toregister"></a>
         <a class="hiddenanchor" id="tologin"></a>
 
         <div id="wrapper">
             <div id="login" class="animate form">
                 <section class="login_content">
-                    <form action="<%=request.getContextPath() %>/devuserSave" method="post">
-                        <h1>欢迎开发者登陆</h1>
+                    <form action="<%=request.getContextPath() %>/devRegistSave" method="post">
+                        <h1>注册</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Username" name="devCode" required="" />
+                            <input type="text" class="form-control" name="devCode" placeholder="LoginName" required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Password" name="devPassword" required="" />
+                            <input type="text" class="form-control" name="devName" placeholder="Username" required="" />
                         </div>
                         <div>
-              
-                            <input class="btn btn-default submit" type="submit" value="登陆">
-                            <a class="reset_pass" href="#">忘记密码?</a>
+                            <input type="password" class="form-control" name="devPassword" placeholder="Password" required="" />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="devEmail" placeholder="Email" required="" />
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="devInfo" placeholder="infomation" required="" />
+                        </div>
+                        
+                        
+                        <div>
+                         <input class="btn btn-default submit" type="submit" value="注册">
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator">
 
-                            <p class="change_link">新的开发者?
-                                <a href="<%=request.getContextPath() %>/devRegist" class="to_register"> 注册 </a>
+                            <p class="change_link">已经有账号?
+                                <a href="<%=request.getContextPath() %>/devuser" class="to_register"> 登陆 </a>
                             </p>
                             <div class="clearfix"></div>
                             <br />
                             <div>
-                                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> 开发者!</h1>
+                                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> 开发者注册!</h1>
 
-                                <p>©2015 All Rights Reserved. wangzherongyao! is a Bootstrap 3 template. Privacy and Terms</p>
+                                <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
                             </div>
                         </div>
                     </form>
@@ -78,9 +85,7 @@
                 </section>
                 <!-- content -->
             </div>
-            </div>
-            </div>
-            
-
+        </div>
+    </div>
 </body>
 </html>

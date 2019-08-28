@@ -14,7 +14,7 @@ public class DataDictionary {
 	/**
 	 * 类型ID
 	 */
-	private Integer typeId;
+	private String typeCode;
 	/**
 	 * 类型名称
 	 */
@@ -50,11 +50,11 @@ public class DataDictionary {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getTypeId() {
-		return typeId;
+	public String getTypeCode() {
+		return typeCode;
 	}
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
+	public void setTypeCode(String typeCode) {
+		this.typeCode = typeCode;
 	}
 	public String getTypeName() {
 		return typeName;

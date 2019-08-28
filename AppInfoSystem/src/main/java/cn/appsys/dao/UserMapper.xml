@@ -5,6 +5,12 @@
 	<select id="getDevUserLogin" parameterType="DevUser" resultType="Integer">
 		select * from dev_user where devCode=#{devCode} and devPassword=#{devPassword}
 	</select>
+	
+	<!-- 根据用户名查用户 -->
+	<select id="getUser" parameterType="DevUser" resultType="DevUser">
+		select * from dev_user where devCode=#{devCode} and devPassword=#{devPassword}
+	</select>
+	
 	<!-- 查询所有用户-->
 	<select id="getUserList" parameterType="DevUser" resultType="DevUser">
 		select * from dev_user 
@@ -16,8 +22,8 @@
 	</select>
 	<!-- 用户注册 -->
 	<insert id="addUser" parameterType="DevUser">
-		insert into dev_user(devCode,devName,devPassword,devEmail,devInfo)
-		value(#{devCode},#{devName},#{devPassword},#{devEmail},#{devInfo})
+		insert into dev_user(devCode,devName,devPassword,devEmail,devInfo,creationDate)
+		value(#{devCode},#{devName},#{devPassword},#{devEmail},#{devInfo},#{creationDate})
 	</insert>
 	<!-- 用户修改 -->
 	<update id="updateUser" parameterType="DevUser">

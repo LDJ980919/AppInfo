@@ -38,5 +38,11 @@ public interface UserService {
 	 * @return
 	 */
 	public Integer deleteUser(Integer id);
+	/**
+	 * 根据用户名查用户
+	 * @param id
+	 * @return
+	 */
+	public DevUser getUser(DevUser user);
 
 }

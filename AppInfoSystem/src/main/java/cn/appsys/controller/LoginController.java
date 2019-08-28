@@ -1,6 +1,9 @@
 package cn.appsys.controller;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -38,6 +41,29 @@ public class LoginController {
 	public String devUser(){
 		return "devUser/login";
 	}
+	/**开发者注册
+	 * 
+	 */
+	@RequestMapping(value="/devRegist",method=RequestMethod.GET)
+	public String devUser1(){
+		return "devUser/regist";
+	}
+	/**
+	 * 开发者注册页面以后
+	 * @return
+	 */
+	@RequestMapping(value="/devRegistSave",method=RequestMethod.POST)
+	public String devUser2(DevUser user){
+		user.setCreationDate(new Date());
+		Integer result = userService.addUser(user);
+		log.info("账号数量为result=======>"+result);
+		if(result != null){
+			return "devUser/login";
+		}else {
+			return "devUser/regist";
+		}
+		
+	}
 	/**
 	 * 开发者登录查询
 	 * @param devCode
@@ -46,13 +72,15 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value="/devuserSave",method=RequestMethod.POST)
-	public String devUserSave(DevUser user, Model model){
+	public String devUserSave(DevUser user,HttpSession session, Model model){
 		log.info("进入devUserSave方法,账号为:"+user);
 		String error = "";
 		Integer result = userService.getDevUserLogin(user);
 		log.info("账号数量为result=======>"+result);
 		if(result != null){
-			return "index";
+			user=userService.getUser(user);
+			session.setAttribute("user", user);
+			return "redirect:/sys/devuser/index";
 		}else {
 			error = "用户名或密码错误,请重新输入!";
 			model.addAttribute("error", error);

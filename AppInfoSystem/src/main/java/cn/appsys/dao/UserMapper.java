@@ -1,4 +1,4 @@
-package cn.appsys.dao;
+                                                                                                                                                                                                                                                                                                                                               package cn.appsys.dao;
 
 import java.util.List;
 
@@ -41,6 +41,12 @@ public interface UserMapper {
 	 * @return
 	 */
 	public Integer deleteUser(Integer id);
+	/**
+	 * 根据用户名查用户
+	 * @param id
+	 * @return
+	 */
+	public DevUser getUser(DevUser user);
 	
 
 }
