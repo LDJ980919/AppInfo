@@ -3,6 +3,6 @@
 <mapper namespace="cn.appsys.dao.DataDictionaryMapper">
   <!-- 根据用户名查用户 -->
 	<select id="getDataDictionary" parameterType="DataDictionary" resultType="DataDictionary">
-		select * from data_dictionary where typeCode="#{typeCode}"
+		select * from data_dictionary where typeCode=#{typeCode}
 	</select>
 </mapper>

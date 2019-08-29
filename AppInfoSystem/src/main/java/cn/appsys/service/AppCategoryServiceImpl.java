@@ -11,7 +11,7 @@ import cn.appsys.dao.AppCategoryMapper;
 import cn.appsys.pojo.AppCategory;
 @Service("appCategoryService")
 @Transactional
-public class AppCategoryServiceImpl implements AppCategoryMapper {
+public class AppCategoryServiceImpl implements AppCategoryService {
 	@Resource
 	private AppCategoryMapper appCategoryMapper;
 	public List<AppCategory> getAppCategory(Integer type) {
