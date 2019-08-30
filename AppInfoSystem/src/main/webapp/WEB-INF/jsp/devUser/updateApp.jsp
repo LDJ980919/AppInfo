@@ -45,45 +45,45 @@
                                 <div class="x_content">
                                     <br />
                                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="javascript:;" enctype="multipart/form-data" method="post" id="addForm">
-
+											<input type="hidden" name="id" value="${appInfo.id }"/>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">软件名称 <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text"  placeholder="请输入软件的名称" id="first-name" required="required" class="form-control col-md-7 col-xs-12" name="softwareName">
+                                                <input type="text"   id="first-name" required="required" class="form-control col-md-7 col-xs-12" name="softwareName" value="${appInfo.softwareName }">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">APK名称 <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="last-name"  placeholder="请输入APK的名称" name="APKName" required="required" class="form-control col-md-7 col-xs-12" >
+                                                <input type="text" id="last-name"   name="APKName" required="required" class="form-control col-md-7 col-xs-12"  value="${appInfo.APKName }">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="middle-name"  placeholder="请输入支持的RPM" class="form-control col-md-7 col-xs-12" type="text" name="supportROM">
+                                                <input id="middle-name"   class="form-control col-md-7 col-xs-12" type="text" name="supportROM" value="${appInfo.supportROM }">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">界面语言</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="middle-name"  placeholder="请输入软件支持的界面语言" class="form-control col-md-7 col-xs-12" type="text" name="interfaceLanguage">
+                                                <input id="middle-name"   class="form-control col-md-7 col-xs-12" type="text" name="interfaceLanguage" value="${appInfo.interfaceLanguage }">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">软件大小 <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="middle-name"  placeholder="请输入软件大小，单位为MB" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="softwareSize">
+                                                <input id="middle-name"   class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="softwareSize" value="${appInfo.softwareSize }">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">下载次数<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="middle-name"  placeholder="请输入软件下载次数" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="downloads">
+                                                <input id="middle-name"  class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="downloads" value="${appInfo.downloads }">
                                             </div>
                                         </div>
                                         <div></div>
@@ -94,8 +94,13 @@
                                             	<select id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="flatformId">
                                             		<option>--请选择--</option>
                                             		<c:forEach items="${status}" var="sta">
-				<										<option value="${sta.id}" >${sta.valueName}</option>
-													</c:forEach>
+	                                            		<c:if test="${sta.id==appInfo.flatformId}">
+	                                            		<option value="${sta.id}" selected="selected">${sta.valueName}</option>
+	                                            		</c:if>
+	                                            		<c:if test="${sta.id!=appInfo.flatformId}">
+	                                            		<option value="${sta.id}" >${sta.valueName}</option>
+	                                            		</c:if>
+                                            		</c:forEach>
                                             	</select>
                                             </div>
                                         </div>
@@ -106,7 +111,13 @@
                                             <select id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="categoryLevel1" onchange="add1(this.value);">
                                             		<option>--请选择--</option>
                                             		<c:forEach items="${list1}" var="list">
-				<										<option value="${list.id}" >${list.categoryName}</option>
+                                            			<c:if test="${list.id==appInfo.categoryLevel1}">
+	                                            		<option value="${list.id}"  selected="selected">${list.categoryName}</option>
+	                                            		</c:if>
+	                                            		<c:if test="${list.id!=appInfo.categoryLevel1}">
+	                                            		<option value="${list.id}" >${list.categoryName}</option>
+	                                            		</c:if>
+														
 													</c:forEach>
                                             	</select>
                                             </div>
@@ -116,7 +127,16 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <select id="middle-name1" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="categoryLevel2" onchange="add2(this.value);">
-                                            		
+                                            	<option>--请选择--</option>
+                                            		<c:forEach items="${categoryList}" var="list">
+                                            			<c:if test="${list.id==appInfo.categoryLevel2}">
+	                                            		<option value="${list.id}"  selected="selected">${list.categoryName}</option>
+	                                            		</c:if>
+	                                            		<c:if test="${list.id!=appInfo.categoryLevel1}">
+	                                            		<option value="${list.id}" >${list.categoryName}</option>
+	                                            		</c:if>
+														
+													</c:forEach>	
                                             	</select>
                                                
                                             </div>
@@ -126,7 +146,16 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="middle-name2" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="categoryLevel3">
-                                            		
+                                            		<option>--请选择--</option>
+                                            		<c:forEach items="${categoryList}" var="list">
+                                            			<c:if test="${list.id==appInfo.categoryLevel3}">
+	                                            		<option value="${list.id}"  selected="selected">${list.categoryName}</option>
+	                                            		</c:if>
+	                                            		<c:if test="${list.id!=appInfo.categoryLevel1}">
+	                                            		<option value="${list.id}" >${list.categoryName}</option>
+	                                            		</c:if>
+														
+													</c:forEach>
                                             	</select>
                                               
                                             </div>
@@ -143,14 +172,16 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">应用简介 <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="appInfo">
+                                                <input id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="appInfo" value="${appInfo.appInfo }">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">LOGO图片<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="file" name="attachs"/>
+                                                <img alt="图片" src="<%=request.getContextPath() %>/static/uploadfiles/${appInfo.logoPicPath }" style="width:150px;height:200px;" id="image1">
+                                              
+                                                 <input id="middle-name" class="date-picker form-control col-md-7 col-xs-12"  type="file" name="attachs" id="file1" value="${appInfo.logoPicPath }" /> 
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
@@ -255,13 +286,20 @@
             });
         </script>
         <script src="<%=request.getContextPath() %>/static/js/custom.js"></script>
+<script type="text/javascript">
+$('#button1').click(function () {
+    $('#image1').toggle(1000);
+    $('#file1').toggle(1000);
+    
+  });
 
+</script>
 <script type="text/javascript">
 $("#demo-form2").submit(function(){
 	var data =$(this).serialize();
 	var data=new FormData(document.getElementById("demo-form2"));
 	$.ajax({
-		url:"<%=request.getContextPath() %>/sys/devuser/appInfoAddSave",
+		url:"<%=request.getContextPath() %>/sys/devuser/appInfoUpdateSave",
 		data:data,
 		type:"POST",
 		dataType:"text",
@@ -271,11 +309,11 @@ $("#demo-form2").submit(function(){
 			console.log(typeof data)
 			if(data=="1"){
 				
-				alert("APP信息添加成功");
+				alert("APP信息修改成功");
 				$("#main1").load("<%=request.getContextPath() %>/sys/devuser/index");
 			}else{
 				
-				alert("APP信息添加失败");
+				alert("APP信息修改失败");
 			}
 			
 		}
@@ -283,6 +321,8 @@ $("#demo-form2").submit(function(){
 	});
 	
 }); 
+
+
 function add1(val){
 	  
 	   $.ajax({
@@ -485,7 +525,7 @@ function add2(val){
                     fileUploadError: showErrorAlert
                 });
                 window.prettyPrint && prettyPrint();
-            });
+            })
         </script>
         <!-- /editor -->
 

@@ -4,4 +4,13 @@
   <select id="getAppCategory" parameterType="int" resultType="AppCategory">
 		select * from app_category where type=#{type}
 	</select>
+	
+	 <select id="getAppCategoryById" parameterType="int" resultType="AppCategory">
+		select * from app_category where parentId=#{id}
+	</select>
+	
+	
+	 <select id="getAppCategoryList" parameterType="int" resultType="AppCategory">
+		select * from app_category 
+	</select>
 </mapper>

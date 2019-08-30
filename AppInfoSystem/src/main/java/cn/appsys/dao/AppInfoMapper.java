@@ -5,32 +5,32 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import cn.appsys.pojo.AppInfo;
 /**
- * APP��Ϣ�б����ݷ��ʲ�ӿ�
+ * APP锟斤拷息锟叫憋拷锟斤拷锟捷凤拷锟绞诧拷涌锟�
  * @author czm
  *
  */
 @Repository("appInfoMapper")
 public interface AppInfoMapper {
 	/**
-	 * �������ģ����ѯ,app״̬��ƽ̨��һ���������ද̬��ѯ
+	 * 锟斤拷锟斤拷锟斤拷锟侥ｏ拷锟斤拷锟窖�,app状态锟斤拷平台锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟洁动态锟斤拷询
 	 * @param appInfo
 	 * @return
 	 */
 	public List<AppInfo> getAppInfoList(AppInfo appInfo);
 	/**
-	 * 增加APP基础信息
+	 * 澧炲姞APP鍩虹淇℃伅
 	 * @param appInfo
 	 * @return
 	 */
 	public Integer addAppInfo(AppInfo appInfo);
 	/**
-	 * 更改APP基础信息
+	 * 鏇存敼APP鍩虹淇℃伅
 	 * @param appInfo
 	 * @return
 	 */
 	public Integer updateAppInfo(AppInfo appInfo);
 	/**
-	 * 删除app基础信息
+	 * 鍒犻櫎app鍩虹淇℃伅
 	 * @param id
 	 * @return
 	 */
@@ -41,5 +41,7 @@ public interface AppInfoMapper {
 	 * @return
 	 */
 	public AppInfo getAppInfo(Integer id );
+	 
+
 	
 }

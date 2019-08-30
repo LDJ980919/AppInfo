@@ -6,19 +6,19 @@ import cn.appsys.pojo.AppInfo;
 
 public interface AppInfoService {
 	/**
-	 * �������ģ����ѯ,app״̬��ƽ̨��һ���������ද̬��ѯ
+	 * 锟斤拷锟斤拷锟斤拷锟侥ｏ拷锟斤拷锟窖�,app状态锟斤拷平台锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟洁动态锟斤拷询
 	 * @param appInfo
 	 * @return
 	 */
 	public List<AppInfo> getAppInfoList(AppInfo appInfo);
 	/**
-	 * 增加APP基础信息
+	 * 澧炲姞APP鍩虹淇℃伅
 	 * @param appInfo
 	 * @return
 	 */
 	public Integer addAppInfo(AppInfo appInfo);
 	/**
-	 * 更改APP基础信息
+	 * 鏇存敼APP鍩虹淇℃伅
 	 * @param appInfo
 	 * @return
 	 */
@@ -30,4 +30,5 @@ public interface AppInfoService {
 	 */
 	public AppInfo getAppInfo(Integer id );
 	
+
 }

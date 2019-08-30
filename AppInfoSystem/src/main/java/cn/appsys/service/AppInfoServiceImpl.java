@@ -27,6 +27,7 @@ public class AppInfoServiceImpl implements AppInfoService{
 	public Integer updateAppInfo(AppInfo appInfo) {
 		return appInfoMapper.updateAppInfo(appInfo);
 	}
+
 	/**
 	 * 根据id获取apk名称
 	 * @param id
