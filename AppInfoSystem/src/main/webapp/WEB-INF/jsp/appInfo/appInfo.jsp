@@ -102,7 +102,7 @@
 											<c:if test="${statusList != null}">
 												<option value="">--请选择--</option>
 												<c:forEach items="${statusList }" var="statu">
-													<option <c:if test="${statu.valueName == appStatus}">selected="selected"</c:if> value="${statu.valueName}">${statu.valueName}</option>
+													<option <c:if test="${statu.id == appStatus}">selected="selected"</c:if> value="${statu.id}">${statu.valueName}</option>
 												</c:forEach>
 											</c:if>
 										</select>
@@ -115,7 +115,7 @@
 											<c:if test="${flatFormList != null}">
 												<option value="">--请选择--</option>
 												<c:forEach items="${flatFormList }" var="flat">
-													<option <c:if test="${flat.valueName == appFlatform }">selected="selected"</c:if> value="${flat.valueName}">${flat.valueName}</option>
+													<option <c:if test="${flat.id == appFlatform }">selected="selected"</c:if> value="${flat.id}">${flat.valueName}</option>
 												</c:forEach>
 											</c:if>
 										</select>
@@ -128,7 +128,7 @@
 											<c:if test="${categoryLevel1List != null}">
 												<option value="">--请选择--</option>
 												<c:forEach items="${categoryLevel1List }" var="cate">
-													<option <c:if test="${cate.categoryName == appCategoryName1 }">selected="selected"</c:if> value="${cate.categoryName}">${cate.categoryName}</option>
+													<option <c:if test="${cate.id == appCategoryName1 }">selected="selected"</c:if> value="${cate.id}">${cate.categoryName}</option>
 												</c:forEach>
 											</c:if>
 										</select>
@@ -141,7 +141,7 @@
 											<c:if test="${categoryLevel2List != null}">
 												<option value="">--请选择--</option>
 												<c:forEach items="${categoryLevel2List }" var="cate">
-													<option <c:if test="${cate.categoryName == appCategoryName2 }">selected="selected"</c:if> value="${cate.categoryName}">${cate.categoryName}</option>
+													<option <c:if test="${cate.id == appCategoryName2 }">selected="selected"</c:if> value="${cate.id}">${cate.categoryName}</option>
 												</c:forEach>
 											</c:if>
 										</select>
@@ -154,7 +154,7 @@
 											<c:if test="${categoryLevel3List != null}">
 												<option value="">--请选择--</option>
 												<c:forEach items="${categoryLevel3List }" var="cate">
-													<option <c:if test="${cate.categoryName == appCategoryName3 }">selected="selected"</c:if> value="${cate.categoryName}">${cate.categoryName}</option>
+													<option <c:if test="${cate.id == appCategoryName3 }">selected="selected"</c:if> value="${cate.id}">${cate.categoryName}</option>
 												</c:forEach>
 											</c:if>
 										</select>

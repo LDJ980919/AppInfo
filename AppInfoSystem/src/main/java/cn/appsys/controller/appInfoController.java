@@ -52,11 +52,31 @@ public class appInfoController {
 			@RequestParam(value = "appCategoryName3",required = false,defaultValue = "") String appCategoryName3){
 		AppInfo appInfo = new AppInfo();
 		appInfo.setSoftwareName(softwareName);
-		appInfo.setAppStatus(appStatus);
-		appInfo.setAppFlatform(appFlatform);
-		appInfo.setAppCategoryName1(appCategoryName1);
-		appInfo.setAppCategoryName2(appCategoryName2);
-		appInfo.setAppCategoryName3(appCategoryName3);
+		Integer status = null;
+		if(appStatus!=null && !appStatus.equals("")){
+			status = Integer.parseInt(appStatus);
+		}
+		Integer flat = null;
+		if(appFlatform!=null && !appFlatform.equals("")){
+			flat = Integer.parseInt(appFlatform);
+		}
+		Integer cate1 = null;
+		if(appCategoryName1!=null && !appCategoryName1.equals("")){
+			cate1 = Integer.parseInt(appCategoryName1);
+		}
+		Integer cate2 = null;
+		if(appCategoryName2!=null && !appCategoryName2.equals("")){
+			cate2 = Integer.parseInt(appCategoryName2);
+		}
+		Integer cate3 = null;
+		if(appCategoryName3!=null && !appCategoryName3.equals("")){
+			cate3 = Integer.parseInt(appCategoryName3);
+		}
+		appInfo.setStatus(status);
+		appInfo.setFlatformId(flat);
+		appInfo.setCategoryLevel1(cate1);
+		appInfo.setCategoryLevel2(cate2);
+		appInfo.setCategoryLevel3(cate3);
 		List<AppInfo> appList = appInfoService.getAppInfoList(appInfo);
 		List<DataDictionary> statusList = null;
 		List<DataDictionary> flatFormList = null;
