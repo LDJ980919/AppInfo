@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cn.appsys.pojo.AppCategory;
 import cn.appsys.pojo.AppInfo;
+import cn.appsys.pojo.DataDictionary;
+import cn.appsys.service.AppCategoryService;
 import cn.appsys.service.AppInfoService;
+import cn.appsys.service.DataDictionaryService;
 
 @Controller
 public class appInfoController {
@@ -21,6 +25,10 @@ public class appInfoController {
 	
 	@Resource
 	private AppInfoService appInfoService;
+	@Resource
+	private DataDictionaryService dataService;
+	@Resource
+	private AppCategoryService cateService;
 	
 	@RequestMapping(value="/test")
 	public String apptest(Model model,
@@ -32,5 +40,43 @@ public class appInfoController {
 		List<AppInfo> appList = appInfoService.getAppInfoList(appInfo);
 		model.addAttribute("appList", appList);
 		return "appInfo/test";
+	}
+	
+	@RequestMapping(value="/appInfo")
+	public String apptest1(Model model,
+			@RequestParam(value = "softwareName", required = false, defaultValue = "") String softwareName,
+			@RequestParam(value = "appStatus",required = false,defaultValue = "") String appStatus,
+			@RequestParam(value = "appFlatform",required = false,defaultValue = "") String appFlatform,
+			@RequestParam(value = "appCategoryName1",required = false,defaultValue = "") String appCategoryName1,
+			@RequestParam(value = "appCategoryName2",required = false,defaultValue = "") String appCategoryName2,
+			@RequestParam(value = "appCategoryName3",required = false,defaultValue = "") String appCategoryName3){
+		AppInfo appInfo = new AppInfo();
+		appInfo.setSoftwareName(softwareName);
+		appInfo.setAppStatus(appStatus);
+		appInfo.setAppFlatform(appFlatform);
+		appInfo.setAppCategoryName1(appCategoryName1);
+		appInfo.setAppCategoryName2(appCategoryName2);
+		appInfo.setAppCategoryName3(appCategoryName3);
+		List<AppInfo> appList = appInfoService.getAppInfoList(appInfo);
+		List<DataDictionary> statusList = null;
+		List<DataDictionary> flatFormList = null;
+		List<AppCategory> categoryLevel1List = null;//列出一级分类列表，注：二级和三级分类列表通过异步ajax获取
+		List<AppCategory> categoryLevel2List = null;
+		List<AppCategory> categoryLevel3List = null;
+		DataDictionary dataDictionary = new DataDictionary();
+		dataDictionary.setTypeCode("1");
+		statusList = dataService.getDataDictionary(dataDictionary);
+		dataDictionary.setTypeCode("2");
+		flatFormList = dataService.getDataDictionary(dataDictionary);
+		categoryLevel1List = cateService.getAppCategory(1);
+		categoryLevel2List = cateService.getAppCategory(2);
+		categoryLevel3List = cateService.getAppCategory(3);
+		model.addAttribute("appList", appList);
+		model.addAttribute("statusList", statusList);
+		model.addAttribute("flatFormList", flatFormList);
+		model.addAttribute("categoryLevel1List", categoryLevel1List);
+		model.addAttribute("categoryLevel2List", categoryLevel2List);
+		model.addAttribute("categoryLevel3List", categoryLevel3List);
+		return "appInfo/appInfo";
 	}
 }
