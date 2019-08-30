@@ -12,25 +12,25 @@ import cn.appsys.pojo.AppInfo;
 @Repository("appInfoMapper")
 public interface AppInfoMapper {
 	/**
-	 * 锟斤拷锟斤拷锟斤拷锟侥ｏ拷锟斤拷锟窖�,app状态锟斤拷平台锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟洁动态锟斤拷询
+	 * 查询所有App基础信息,可根据软件名称模糊查询,状态,平台,一级二级三级分来查询
 	 * @param appInfo
 	 * @return
 	 */
 	public List<AppInfo> getAppInfoList(AppInfo appInfo);
 	/**
-	 * 澧炲姞APP鍩虹淇℃伅
+	 * 增加APP基础信息
 	 * @param appInfo
 	 * @return
 	 */
 	public Integer addAppInfo(AppInfo appInfo);
 	/**
-	 * 鏇存敼APP鍩虹淇℃伅
+	 * 更改APP基础信息
 	 * @param appInfo
 	 * @return
 	 */
 	public Integer updateAppInfo(AppInfo appInfo);
 	/**
-	 * 鍒犻櫎app鍩虹淇℃伅
+	 * 删除app基础信息
 	 * @param id
 	 * @return
 	 */
@@ -41,7 +41,13 @@ public interface AppInfoMapper {
 	 * @return
 	 */
 	public AppInfo getAppInfo(Integer id );
-	 
+	
+	/**
+	 * 根据id查询app基础信息
+	 * @param id
+	 * @return
+	 */
+	public AppInfo getAppInfoById(Integer id);
 
 	
 }
