@@ -23,4 +23,11 @@ public interface AppInfoService {
 	 * @return
 	 */
 	public Integer updateAppInfo(AppInfo appInfo);
+	/**
+	 * 根据id获取apk名称
+	 * @param id
+	 * @return
+	 */
+	public AppInfo getAppInfo(Integer id );
+	
 }

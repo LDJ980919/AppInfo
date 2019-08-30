@@ -15,6 +15,7 @@ import cn.appsys.pojo.AppInfo;
 import cn.appsys.service.AppInfoService;
 
 @Controller
+@RequestMapping("sys/app")
 public class appInfoController {
 	
 	private Logger log = Logger.getLogger(appInfoController.class);
@@ -33,4 +34,5 @@ public class appInfoController {
 		model.addAttribute("appList", appList);
 		return "appInfo/test";
 	}
+	
 }

@@ -67,4 +67,10 @@
 			logoPicPath = #{logoPicPath}
 		where id = #{id}
 	</update>
+	
+	<!-- 根据id获取apk名称 -->
+	<select id="getAppInfo" parameterType="Integer" resultType="AppInfo">
+		select * from app_info where id=#{id}
+	</select>
+	
 </mapper>

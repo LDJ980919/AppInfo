@@ -35,4 +35,11 @@ public interface AppInfoMapper {
 	 * @return
 	 */
 	public Integer deleteAppInfo(Integer id);
+	/**
+	 * 根据id获取apk名称
+	 * @param id
+	 * @return
+	 */
+	public AppInfo getAppInfo(Integer id );
+	
 }
