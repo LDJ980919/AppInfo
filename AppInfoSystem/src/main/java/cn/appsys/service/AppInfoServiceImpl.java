@@ -27,5 +27,10 @@ public class AppInfoServiceImpl implements AppInfoService{
 	public Integer updateAppInfo(AppInfo appInfo) {
 		return appInfoMapper.updateAppInfo(appInfo);
 	}
+
+	public AppInfo getAppInfo(Integer id) {
+		// TODO Auto-generated method stub
+		return appInfoMapper.getAppInfo(id);
+	}
 	
 }

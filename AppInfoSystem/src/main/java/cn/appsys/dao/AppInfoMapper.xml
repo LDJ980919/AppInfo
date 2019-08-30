@@ -67,4 +67,9 @@
 			logoPicPath = #{logoPicPath}
 		where id = #{id}
 	</update>
+	
+	<!-- 查询该app的信息 -->
+	<select id="getAppInfo" resultType="AppInfo" parameterType="int">
+		select * from app_info where id=#{id}
+	</select>
 </mapper>

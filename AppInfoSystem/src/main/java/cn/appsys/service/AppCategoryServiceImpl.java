@@ -18,5 +18,13 @@ public class AppCategoryServiceImpl implements AppCategoryService {
 	
 		return appCategoryMapper.getAppCategory(type);
 	}
+	public List<AppCategory> getAppCategoryById(Integer id) {
+		// TODO Auto-generated method stub
+		return appCategoryMapper.getAppCategoryById(id);
+	}
+	public List<AppCategory> getAppCategoryList() {
+		// TODO Auto-generated method stub
+		return appCategoryMapper.getAppCategoryList();
+	}
 
 }

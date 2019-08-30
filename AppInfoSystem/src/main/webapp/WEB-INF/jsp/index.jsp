@@ -413,7 +413,8 @@
         	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/userList");
         });
         $("#update").click(function(){
-        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/userList");
+        	var id=21;
+        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/updateApp"+id);
         });
         $("#delete").click(function(){
         	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/userList");
