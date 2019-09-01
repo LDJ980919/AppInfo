@@ -19,5 +19,17 @@ public interface AppVersionMapper {
 	 * @return
 	 */
 	public Integer addAppVersion(AppVersion appVersion);
+	/**
+	 * 根据id修改版本信息
+	 * @param id
+	 * @return
+	 */
+	public Integer updateAppVersion(Integer id);
+	/**
+	 * 根据id查询版本信息
+	 * @param id
+	 * @return
+	 */
+	public AppVersion getAppVersionById(Integer id);
 
 }

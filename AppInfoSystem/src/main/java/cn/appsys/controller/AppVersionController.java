@@ -102,9 +102,8 @@ public class AppVersionController {
 		}
 	if(isResult){
 		//((User) session.getAttribute("user")).getId();
-		DevUser devUser = new DevUser();
-		appVersion.setModifyBy(devUser.getId());
-		appVersion.setModifyDate(new Date());
+		appVersion.setCreatedBy(((DevUser)session.getAttribute("user")).getId());
+		appVersion.setCreationDate(new Date());
 		appVersion.setPublishStatus(11);
 		Integer result = appVersionService.addAppVersion(appVersion);
 		return JSON.toJSONString(result);
@@ -113,9 +112,75 @@ public class AppVersionController {
 		return JSON.toJSONString(0);
 	}
   }
-	
-	
-	
+	@RequestMapping(value="/upAppVersion" , method=RequestMethod.GET)
+	public String updateAppVersion(Integer id , Model model){
+		log.info("进入updateAppVersion方法===========>方法参数为:"+id);
+		AppVersion appVersion = appVersionService.getAppVersionById(id);
+		model.addAttribute("appVersion", appVersion);
+		log.info("updateAppVersion方法执行结束,参数为:appVersion"+appVersion);
+		return "/upAppVersion";
+	}
+	@RequestMapping(value="/updateAppVersionSave" , method=RequestMethod.POST)
+	public String updateAppVersionSave(@RequestParam(value="appId")Integer appId , AppVersion appVersion , HttpServletRequest request ,HttpSession session , 
+			@RequestParam(value="middle-name",required=false)MultipartFile[] attachs){
+		log.info("进入updateAppVersionSave方法,参数为appVersion:"+appVersion);
+		String errorInfo="";//错误信息
+		boolean isResult = true;//是否出错
+		String fileName="";//生成的文件名称
+		String errorType = "";//错误的属性
+		String savePath = session.getServletContext().getRealPath("statics"+File.separator+"uploadfiles");
+		File saveFile = new File(savePath);
+		if(saveFile.exists()){
+			saveFile.mkdirs();
+		}
+		log.info("文件保存路劲:"+savePath);
+		
+		for(int i=0;i<attachs.length;i++){
+			log.info("第============"+i+"====================次循环");
+			MultipartFile attach = attachs[i];
+			if(!attach.isEmpty()){
+				//获取原文件名
+				String oldName = attach.getOriginalFilename();
+				//获取原后缀
+				String oldSuffix = FilenameUtils.getExtension(oldName);
+				int fileSize = 5000000;
+				if(attach.getSize()>fileSize){
+					errorInfo = "文件大小不得超过500KB";
+					isResult = false;
+				}else if(oldSuffix.equalsIgnoreCase("jpg")){
+					String apkName = appInfoService.getAppInfo(appId).getAPKName();
+					log.info("文件名为:====================>"+apkName);
+					fileName = apkName+"-"+appVersion.getVersionNo()+".jpg";
+					File targetFile = new File(saveFile , fileName);
+					if(!targetFile.exists()){
+						targetFile.mkdirs();
+					}
+					try {
+						//将MultipartFile 对象中文件流写入到文件中去
+						attach.transferTo(targetFile);
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+						errorInfo = "文件上传失败";
+						isResult = false;
+					}
+				}else{
+					errorInfo = "文件格式必须为apk";
+					isResult = false;
+				}
+			}
+		}
+	if(isResult){
+		appVersion.setModifyBy(((DevUser)session.getAttribute("user")).getId());
+		appVersion.setModifyDate(new Date());
+		appVersion.setPublishStatus(11);
+		Integer result = appVersionService.addAppVersion(appVersion);
+		return JSON.toJSONString(result);
+	}else{
+		request.setAttribute(errorType, errorInfo);
+		return JSON.toJSONString(0);
+	}
+		
+	}
 	
 	
 }

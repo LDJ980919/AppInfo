@@ -16,4 +16,23 @@
 		insert into app_version(appId,versionNo,versionSize,publishStatus,versionInfo,apkFileName,modifyBy,modifyDate)
 		value(#{appId},#{versionNo},#{versionSize},#{publishStatus},#{versionInfo},#{apkFileName},#{modifyBy},#{modifyDate})
 	</insert>
+	
+	<!-- 根据id修改版本信息 -->
+	<update id="updateAppVersion" parameterType="Integer">
+		update app_version set
+		appId=#{appId}
+		versionNo=#{versionNo}
+		versionSize=#{versionSize}
+		publishStatus=#{publishStatus}
+		versionInfo=#{versionInfo}
+		apkFileName=#{apkFileName}
+		modifyBy=#{modifyBy}
+		modifyDate=#{modifyDate}
+		where id=#{id}
+	</update>
+	
+	<!-- 根据id查询版本信息 -->
+	<select id="getAppVersionById">
+		select * from app_version where id=#{id}
+	</select>
 </mapper>

@@ -29,5 +29,21 @@ public class AppVersionServiceImpl implements AppVersionService {
 	public Integer addAppVersion(AppVersion appVersion) {
 		return appVersionMapper.addAppVersion(appVersion);
 	}
+	/**
+	 * 根据id修改版本信息
+	 * @param id
+	 * @return
+	 */
+	public Integer updateAppVersion(Integer id) {
+		return appVersionMapper.updateAppVersion(id);
+	}
+	/**
+	 * 根据id查询版本信息
+	 * @param id
+	 * @return
+	 */
+	public AppVersion getAppVersionById(Integer id) {
+		return appVersionMapper.getAppVersionById(id);
+	}
 
 }
