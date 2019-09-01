@@ -11,7 +11,7 @@
 		 where appId=i.id and appId=#{appId} and publishStatus=d.id
 	</select>
 	
-	<!-- 添加ap版本信息 -->
+	<!-- 添加app版本信息 -->
 	<insert id="addAppVersion" parameterType="AppVersion">
 		insert into app_version(appId,versionNo,versionSize,publishStatus,versionInfo,apkFileName,modifyBy,modifyDate)
 		value(#{appId},#{versionNo},#{versionSize},#{publishStatus},#{versionInfo},#{apkFileName},#{modifyBy},#{modifyDate})
@@ -32,7 +32,7 @@
 	</update>
 	
 	<!-- 根据id查询版本信息 -->
-	<select id="getAppVersionById">
+	<select id="getAppVersionById" parameterType="Integer" resultType="AppVersion">
 		select * from app_version where id=#{id}
 	</select>
 </mapper>

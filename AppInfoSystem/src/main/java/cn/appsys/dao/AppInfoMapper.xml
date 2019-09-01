@@ -68,13 +68,6 @@
 		where id = #{id}
 	</update>
 	
-
-	<!-- 根据id获取apk名称 -->
-	<select id="getAppInfo" parameterType="Integer" resultType="AppInfo">
-		select * from app_info where id=#{id}
-	</select>
-	
-
 	<!-- 查询该app的信息 -->
 	<select id="getAppInfo" resultType="AppInfo" parameterType="int">
 		select * from app_info where id=#{id}

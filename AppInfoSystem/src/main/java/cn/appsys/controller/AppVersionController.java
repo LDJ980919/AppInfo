@@ -112,7 +112,7 @@ public class AppVersionController {
 		return JSON.toJSONString(0);
 	}
   }
-	@RequestMapping(value="/upAppVersion" , method=RequestMethod.GET)
+	@RequestMapping(value="/upAppVersion")
 	public String updateAppVersion(Integer id , Model model){
 		log.info("进入updateAppVersion方法===========>方法参数为:"+id);
 		AppVersion appVersion = appVersionService.getAppVersionById(id);
@@ -121,6 +121,7 @@ public class AppVersionController {
 		return "/upAppVersion";
 	}
 	@RequestMapping(value="/updateAppVersionSave" , method=RequestMethod.POST)
+	@ResponseBody
 	public String updateAppVersionSave(@RequestParam(value="appId")Integer appId , AppVersion appVersion , HttpServletRequest request ,HttpSession session , 
 			@RequestParam(value="middle-name",required=false)MultipartFile[] attachs){
 		log.info("进入updateAppVersionSave方法,参数为appVersion:"+appVersion);
