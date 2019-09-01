@@ -36,6 +36,16 @@ public class AppInfoServiceImpl implements AppInfoService{
 	public AppInfo getAppInfo(Integer id) {
 		return appInfoMapper.getAppInfo(id);
 	}
+
+	@Override
+	public Integer deleteAppInfo(Integer id) {
+		return appInfoMapper.deleteAppInfo(id);
+	}
+
+	@Override
+	public AppInfo getAppInfoById(Integer id) {
+		return appInfoMapper.getAppInfoById(id);
+	}
 	
 	
 }
