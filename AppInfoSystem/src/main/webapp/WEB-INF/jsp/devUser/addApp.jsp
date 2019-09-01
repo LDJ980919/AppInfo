@@ -16,7 +16,7 @@
     <!-- Custom styling plus plugins -->
     <link href="<%=request.getContextPath() %>/static/css/custom.css" rel="stylesheet">
     <link href="<%=request.getContextPath() %>/static/css/icheck/flat/green.css" rel="stylesheet">
-
+<script type="text/javascript" src="<%=request.getContextPath() %>/static/js/jquery-1.12.4.min.js"></script>
 
    
 </head>
@@ -158,7 +158,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                             <input  type="submit" class="btn btn-primary" value="保存">
                                               
-                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/index">返回</a></button>
+                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/appInfo">返回</a></button>
                                             </div>
                                         </div>
 
@@ -272,7 +272,7 @@ $("#demo-form2").submit(function(){
 			if(data=="1"){
 				
 				alert("APP信息添加成功");
-				$("#main1").load("<%=request.getContextPath() %>/sys/devuser/index");
+				$("#main1").load("<%=request.getContextPath() %>/sys/devuser/appInfo");
 			}else{
 				
 				alert("APP信息添加失败");

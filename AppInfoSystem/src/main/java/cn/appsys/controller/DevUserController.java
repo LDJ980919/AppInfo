@@ -77,7 +77,7 @@ public class DevUserController {
 		return "devUser/addApp";
 	}
 	/**
-	 * ¶þ¼¶Áª¶¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param cid1
 	 * @param response
 	 * @return
@@ -107,17 +107,17 @@ public class DevUserController {
 	
 	
 	/**
-	 * Ìø×ªµ½ÓÃ»§½çÃæ
+	 * ï¿½ï¿½×ªï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	@RequestMapping(value="/appInfoAddSave",method=RequestMethod.POST)
 	@ResponseBody
 	public String userAddSave(AppInfo appInfo,HttpServletRequest request,HttpSession session
 			,@RequestParam(value="attachs",required=false)MultipartFile[] attachs ){
-		String errorType="";//´íÎóµÄÊôÐÔ
-		String errorInfo="";//´íÎóÐÅÏ¢
-		boolean isResult=true;//ÊÇ·ñ³ö´í
-		String fileName="";//Éú³ÉµÄÎÄ¼þÃû³Æ
+		String errorType="";//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		String errorInfo="";//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+		boolean isResult=true;//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+		String fileName="";//ï¿½ï¿½ï¿½Éµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		String idPicPath="";
 		String workPicPath="";
 		String savePath=session.getServletContext().getRealPath("static"+File.separator+"uploadfiles");
@@ -125,7 +125,7 @@ public class DevUserController {
 		if(!savaFile.exists()){
 			savaFile.mkdirs();
 		}
-		log.info("ÎÄ¼þ±£´æÂ·¾¶£º"+savePath);
+		log.info("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½"+savePath);
 		for(int i=0;i<attachs.length;i++){
 			MultipartFile attach=attachs[i];
 			if(!attach.isEmpty()){
@@ -134,13 +134,13 @@ public class DevUserController {
 				}else{
 					errorType="uploadworkerror";	
 				}
-				//»ñÈ¡Ô­ÎÄ¼þÃû
+				//ï¿½ï¿½È¡Ô­ï¿½Ä¼ï¿½ï¿½ï¿½
 				String oldName=attach.getOriginalFilename();
-				//»ñÈ¡Ô­ºó×º
+				//ï¿½ï¿½È¡Ô­ï¿½ï¿½×º
 				String oldSuffix=FilenameUtils.getExtension(oldName);
 				int fileSize=500000;
 				if(attach.getSize()>fileSize){
-					errorInfo="ÎÄ¼þ´óÐ¡²»µÃ³¬¹ý500kb";
+					errorInfo="ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½500kb";
 					isResult=false;
 				}else if(oldSuffix.equalsIgnoreCase("jpg")||oldSuffix.equalsIgnoreCase("png")||oldSuffix.equalsIgnoreCase("jpeg")||oldSuffix.equalsIgnoreCase("pneg")){
 					 fileName=System.currentTimeMillis()+RandomUtils.nextInt(1000000)+"_persion.jpg";
@@ -148,17 +148,17 @@ public class DevUserController {
 					if(!targetFile.exists()){
 						targetFile.mkdirs();
 					}
-					//½«MultipartFile¶ÔÏóÖÐµÄÎÄ¼þÁ÷Ð´Èëµ½ÎÄ¼þÖÐÈ¥
+					//ï¿½ï¿½MultipartFileï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½ï¿½È¥
 						try {
 							attach.transferTo(targetFile);
 						} catch (IllegalStateException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-							errorInfo="ÎÄ¼þÉÏ´«Ê§°Ü";
+							errorInfo="ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Ê§ï¿½ï¿½";
 							isResult=false;
 						} catch (IOException e) {
 							e.printStackTrace();
-							errorInfo="ÎÄ¼þÉÏ´«Ê§°Ü";
+							errorInfo="ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Ê§ï¿½ï¿½";
 							isResult=false;
 						}
 
@@ -169,7 +169,7 @@ public class DevUserController {
 					}
 					
 				}else{
-					errorInfo="ÎÄ¼þ¸ñÊ½±ØÐëÎªjpg¡¢png¡¢jpeg¡¢pneg";
+					errorInfo="ï¿½Ä¼ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Îªjpgï¿½ï¿½pngï¿½ï¿½jpegï¿½ï¿½pneg";
 					isResult=false;
 				}
 			}
@@ -197,7 +197,7 @@ public class DevUserController {
 	
 	
 	/**
-	 * ÐÞ¸Ä¹¦ÄÜ
+	 * ï¿½Þ¸Ä¹ï¿½ï¿½ï¿½
 	 * @param user
 	 * @return
 	 */
@@ -205,7 +205,7 @@ public class DevUserController {
 	@RequestMapping(value="/updateApp{id}",method=RequestMethod.GET)
 	public String userUpd(@PathVariable String id,HttpSession session,Model m){
 		int id1=Integer.parseInt(id);
-		log.info("½øÈëuserupdate·½·¨"+id);
+		log.info("ï¿½ï¿½ï¿½ï¿½userupdateï¿½ï¿½ï¿½ï¿½"+id);
 		AppInfo appInfo=appInfoService.getAppInfo(id1);
 		m.addAttribute("appInfo", appInfo);
 		
@@ -228,16 +228,16 @@ public class DevUserController {
 	}
 	
 	/**
-	 * ÐÞ¸Ä¹¦ÄÜ
+	 * ï¿½Þ¸Ä¹ï¿½ï¿½ï¿½
 	 */
 		@RequestMapping(value="/appInfoUpdateSave",method=RequestMethod.POST)
 		@ResponseBody
 		public String appUpdateSave(AppInfo appInfo,HttpServletRequest request,HttpSession session
 				,@RequestParam(value="attachs",required=false)MultipartFile[] attachs ){
-			String errorType="";//´íÎóµÄÊôÐÔ
-			String errorInfo="";//´íÎóÐÅÏ¢
-			boolean isResult=true;//ÊÇ·ñ³ö´í
-			String fileName="";//Éú³ÉµÄÎÄ¼þÃû³Æ
+			String errorType="";//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			String errorInfo="";//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+			boolean isResult=true;//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+			String fileName="";//ï¿½ï¿½ï¿½Éµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 			String idPicPath="";
 			String workPicPath="";
 			String savePath=session.getServletContext().getRealPath("static"+File.separator+"uploadfiles");
@@ -245,7 +245,7 @@ public class DevUserController {
 			if(!savaFile.exists()){
 				savaFile.mkdirs();
 			}
-			log.info("ÎÄ¼þ±£´æÂ·¾¶£º"+savePath);
+			log.info("ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½"+savePath);
 			for(int i=0;i<attachs.length;i++){
 				MultipartFile attach=attachs[i];
 				if(!attach.isEmpty()){
@@ -254,13 +254,13 @@ public class DevUserController {
 					}else{
 						errorType="uploadworkerror";	
 					}
-					//»ñÈ¡Ô­ÎÄ¼þÃû
+					//ï¿½ï¿½È¡Ô­ï¿½Ä¼ï¿½ï¿½ï¿½
 					String oldName=attach.getOriginalFilename();
-					//»ñÈ¡Ô­ºó×º
+					//ï¿½ï¿½È¡Ô­ï¿½ï¿½×º
 					String oldSuffix=FilenameUtils.getExtension(oldName);
 					int fileSize=500000;
 					if(attach.getSize()>fileSize){
-						errorInfo="ÎÄ¼þ´óÐ¡²»µÃ³¬¹ý500kb";
+						errorInfo="ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½500kb";
 						isResult=false;
 					}else if(oldSuffix.equalsIgnoreCase("jpg")||oldSuffix.equalsIgnoreCase("png")||oldSuffix.equalsIgnoreCase("jpeg")||oldSuffix.equalsIgnoreCase("pneg")){
 						 fileName=System.currentTimeMillis()+RandomUtils.nextInt(1000000)+"_persion.jpg";
@@ -268,17 +268,17 @@ public class DevUserController {
 						if(!targetFile.exists()){
 							targetFile.mkdirs();
 						}
-						//½«MultipartFile¶ÔÏóÖÐµÄÎÄ¼þÁ÷Ð´Èëµ½ÎÄ¼þÖÐÈ¥
+						//ï¿½ï¿½MultipartFileï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½ï¿½È¥
 							try {
 								attach.transferTo(targetFile);
 							} catch (IllegalStateException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
-								errorInfo="ÎÄ¼þÉÏ´«Ê§°Ü";
+								errorInfo="ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Ê§ï¿½ï¿½";
 								isResult=false;
 							} catch (IOException e) {
 								e.printStackTrace();
-								errorInfo="ÎÄ¼þÉÏ´«Ê§°Ü";
+								errorInfo="ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Ê§ï¿½ï¿½";
 								isResult=false;
 							}
 
@@ -289,7 +289,7 @@ public class DevUserController {
 						}
 						
 					}else{
-						errorInfo="ÎÄ¼þ¸ñÊ½±ØÐëÎªjpg¡¢png¡¢jpeg¡¢pneg";
+						errorInfo="ï¿½Ä¼ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Îªjpgï¿½ï¿½pngï¿½ï¿½jpegï¿½ï¿½pneg";
 						isResult=false;
 					}
 				}
@@ -310,6 +310,19 @@ public class DevUserController {
 			
 			
 			
+		}
+		/**
+		 * åˆ é™¤
+		 * @param user
+		 * @return
+		 */
+		
+		@RequestMapping(value="/deletedApp",method=RequestMethod.POST)
+		@ResponseBody
+		public String userdeleted(Integer id,HttpSession session,Model m){
+			
+			Integer result=appInfoService.deleteAppInfo(id);
+			return JSON.toJSONString(result);
 		}
 	}
 

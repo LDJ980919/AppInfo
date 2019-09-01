@@ -32,5 +32,10 @@ public class AppInfoServiceImpl implements AppInfoService{
 		// TODO Auto-generated method stub
 		return appInfoMapper.getAppInfo(id);
 	}
+
+	public Integer deleteAppInfo(Integer id) {
+		// TODO Auto-generated method stub
+		return appInfoMapper.deleteAppInfo(id);
+	}
 	
 }

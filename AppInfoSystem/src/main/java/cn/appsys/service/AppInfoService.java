@@ -27,4 +27,10 @@ public interface AppInfoService {
 	 * select
 	 */
 	public AppInfo getAppInfo(Integer id);
+	/**
+	 * 鍒犻櫎app鍩虹淇℃伅
+	 * @param id
+	 * @return
+	 */
+	public Integer deleteAppInfo(Integer id);
 }

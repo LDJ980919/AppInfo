@@ -16,7 +16,7 @@
     <!-- Custom styling plus plugins -->
     <link href="<%=request.getContextPath() %>/static/css/custom.css" rel="stylesheet">
     <link href="<%=request.getContextPath() %>/static/css/icheck/flat/green.css" rel="stylesheet">
-
+ <script type="text/javascript" src="<%=request.getContextPath() %>/static/js/jquery-1.12.4.min.js"></script>
 
    
 </head>
@@ -179,8 +179,12 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">LOGO图片<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
+                                            	<c:if test="${appInfo.logoPicPath!=null }">
                                                 <img alt="图片" src="<%=request.getContextPath() %>/static/uploadfiles/${appInfo.logoPicPath }" style="width:150px;height:200px;" id="image1">
-                                              
+                                              </c:if>
+                                              <c:if test="${appInfo.logoPicPath==null }">
+                                                <span class="date-picker form-control col-md-7 col-xs-12" >暂无图片</span>
+                                              </c:if>
                                                  <input id="middle-name" class="date-picker form-control col-md-7 col-xs-12"  type="file" name="attachs" id="file1" value="${appInfo.logoPicPath }" /> 
                                             </div>
                                         </div>
@@ -189,7 +193,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                             <input  type="submit" class="btn btn-primary" value="保存">
                                               
-                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/index">返回</a></button>
+                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/appInfo">返回</a></button>
                                             </div>
                                         </div>
 
@@ -310,7 +314,7 @@ $("#demo-form2").submit(function(){
 			if(data=="1"){
 				
 				alert("APP信息修改成功");
-				$("#main1").load("<%=request.getContextPath() %>/sys/devuser/index");
+				$("#main1").load("<%=request.getContextPath() %>/sys/devuser/appInfo");
 			}else{
 				
 				alert("APP信息修改失败");

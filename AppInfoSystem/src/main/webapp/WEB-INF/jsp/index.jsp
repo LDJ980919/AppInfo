@@ -20,7 +20,7 @@
 
     <!-- Custom styling plus plugins -->
     <link href="<%=request.getContextPath()%>/static/css/custom.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/static/css/maps/jquery-jvectormap-2.0.1.css" />
+   
     <link href="<%=request.getContextPath()%>/static/css/icheck/flat/green.css" rel="stylesheet" />
     <link href="<%=request.getContextPath()%>/static/css/floatexamples.css" rel="stylesheet" type="text/css" />
 
@@ -39,6 +39,7 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+         <script type="text/javascript" src="<%=request.getContextPath() %>/static/js/jquery-1.12.4.min.js"></script>
 
 </head>
 
@@ -267,7 +268,7 @@
 
 
     <!-- worldmap -->
-    <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/maps/jquery-jvectormap-2.0.1.min.js"></script>
+
     <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/maps/gdp-data.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/maps/jquery-jvectormap-world-mill-en.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/maps/jquery-jvectormap-us-aea-en.js"></script>
@@ -293,22 +294,7 @@
     </script>
     <!-- skycons -->
     <script src="<%=request.getContextPath()%>/static/js/skycons/skycons.js"></script>
-    <script>
-        var icons = new Skycons({
-                "color": "#73879C"
-            }),
-            list = [
-                "clear-day", "clear-night", "partly-cloudy-day",
-                "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                "fog"
-            ],
-            i;
-
-        for (i = list.length; i--;)
-            icons.set(list[i], list[i]);
-
-        icons.play();
-    </script>
+    
 
     <!-- dashbord linegraph -->
     <script>
@@ -423,7 +409,7 @@
         	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/add");
         });
         $("#protect").click(function(){
-        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/add");
+        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/appInfo");
         });
     </script>
     <script>
