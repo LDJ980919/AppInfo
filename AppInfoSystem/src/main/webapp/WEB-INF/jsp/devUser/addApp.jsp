@@ -92,7 +92,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             	<select id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="flatformId">
-                                            		<option>--请选择--</option>
+                                            		<option value="0">--请选择--</option>
                                             		<c:forEach items="${status}" var="sta">
 				<										<option value="${sta.id}" >${sta.valueName}</option>
 													</c:forEach>
@@ -104,7 +104,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="categoryLevel1" onchange="add1(this.value);">
-                                            		<option>--请选择--</option>
+                                            		<option value="0">--请选择--</option>
                                             		<c:forEach items="${list1}" var="list">
 				<										<option value="${list.id}" >${list.categoryName}</option>
 													</c:forEach>
@@ -158,7 +158,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                             <input  type="submit" class="btn btn-primary" value="保存">
                                               
-                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/appInfo">返回</a></button>
+                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/index">返回</a></button>
                                             </div>
                                         </div>
 
@@ -295,7 +295,7 @@ function add1(val){
 
 
 		   success:function(data){
-
+			if(val!=0){
 		   var secondCategoryObj = document.getElementById("middle-name1");
 		   var secondCategoryObj2 = document.getElementById("middle-name2");
 		   secondCategoryObj2.innerHTML="";
@@ -315,6 +315,12 @@ function add1(val){
 		        }
 		        }
 
+		   }else{
+			   var secondCategoryObj = document.getElementById("middle-name1");
+			   var secondCategoryObj2 = document.getElementById("middle-name2");
+			   secondCategoryObj2.innerHTML="";
+			   secondCategoryObj.innerHTML="";
+		   }
 		   }
 		   });  
 		   }

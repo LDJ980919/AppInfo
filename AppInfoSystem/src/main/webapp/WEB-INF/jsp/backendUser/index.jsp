@@ -55,7 +55,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>开发者主页</span></a>
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>后台管理者主页</span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -66,7 +66,7 @@
                         </div>
                         <div class="profile_info">
                             <span>欢迎</span>
-                            <h2>${user.devName}</h2>
+                            <h2>${user.userName}</h2>
                         </div>
                     </div>
                     <!-- /menu prile quick info -->
@@ -77,14 +77,15 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                         <div class="menu_section">
-                            <h3>${user.devCode}</h3>
+                            <h3>${user.userCode}</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-edit"></i> APP应用管理 <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-home"></i> APP管理 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="javascript:;" id="protect">APP维护</a>
+                                        <li><a href="javascript:;" id="select">APP审核</a>
                                         </li>
                                     </ul>
                                 </li>
+                                
                                 </ul>
                                 </div>
                                 
@@ -102,7 +103,7 @@
                         <a data-toggle="tooltip" data-placement="top" title="Lock">
                             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                         </a>
-                        <a href="<%=request.getContextPath()%>/sys/devuser/logOut" data-toggle="tooltip" data-placement="top" title="Logout">
+                        <a href="<%=request.getContextPath()%>/sys/backendUser/logOut" data-toggle="tooltip" data-placement="top" title="Logout">
                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                         </a>
                     </div>
@@ -122,12 +123,12 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<%=request.getContextPath()%>/static/images/img.jpg" alt="">${user.devName}
+                                    <img src="<%=request.getContextPath()%>/static/images/img.jpg" alt="">${user.userName}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
                                     
-                                    <li><a href="<%=request.getContextPath()%>/sys/devuser/logOut"><i class="fa fa-sign-out pull-right"></i> 退出</a>
+                                    <li><a href="<%=request.getContextPath()%>/sys/backendUser/logOut"><i class="fa fa-sign-out pull-right"></i> 退出</a>
                                     </li>
                                 </ul>
                             </li>
@@ -145,7 +146,7 @@
             <!-- page content -->
             <div class="right_col" role="main" id="main1">
 
-               <h2>欢迎你：${user.devCode} |<span style="font-weight:bold;}">角色：开发者账户</span></h2>
+               <h2>欢迎你：${user.userCode} |<span style="font-weight:bold;}">角色：后台管理者账户</span></h2>
               
             </div>
             <!-- /page content -->
@@ -160,7 +161,11 @@
         <div class="clearfix"></div>
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
-
+<script>
+$("#select").click(function(){
+	$("#main1").load("<%=request.getContextPath() %>/sys/backendUser/appInfo");
+});
+</script>
     <script src="<%=request.getContextPath()%>/static/js/bootstrap.min.js"></script>
 
     <!-- gauge js -->
@@ -383,7 +388,19 @@
                 $('#reportrange').data('daterangepicker').remove();
             });
         });
-        
+        $("#select").click(function(){
+        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/userList");
+        });
+        $("#update").click(function(){
+        	var id=21;
+        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/updateApp"+id);
+        });
+        $("#delete").click(function(){
+        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/userList");
+        });
+        $("#add").click(function(){
+        	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/add");
+        });
         $("#protect").click(function(){
         	$("#main1").load("<%=request.getContextPath() %>/sys/devuser/appInfo");
         });

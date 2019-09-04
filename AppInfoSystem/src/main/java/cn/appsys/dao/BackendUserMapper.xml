@@ -2,16 +2,9 @@
 <!DOCTYPE mapper PUBLIC "mybatis.org//DTD" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.appsys.dao.BackendUserMapper">
   	<!-- 管理员登入 -->
-  	<select id="getBacUserLogin" parameterType="BackendUser" resultType="Integer">
-  		select * from beckend_user 
-  		<where>
-  			<if test="userCode!=null and userCode!=''">
-  			and	userCode=#{userCode} 
-  			</if>
-  			<if test="userPassword!=null and userPassword!=''">
-  			and	userPassword=#{userPassword} 
-  			</if>
-  		</where>
+  	<select id="getBacUserLogin" parameterType="BackendUser" resultType="BackendUser">
+  		select * from backend_user where userCode=#{userCode} and userPassword=#{userPassword} 
+  		
   	</select>
   	<!-- 修改管理员信息 -->
   	<update id="updateBacUser" parameterType="BackendUser">
@@ -44,4 +37,9 @@
   	<select id="getBacUserList" parameterType="BackendUser" resultType="BackendUser">
   		select * from backend_user
   	</select>
+  	<!-- 用户注册 -->
+	<insert id="addUser" parameterType="BackendUser">
+		insert into backend_user(userCode,userName,userPassword,creationDate)
+		value(#{userCode},#{userName},#{userPassword},#{creationDate})
+	</insert>
 </mapper>

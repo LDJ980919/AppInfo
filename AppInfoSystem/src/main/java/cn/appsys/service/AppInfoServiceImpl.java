@@ -28,14 +28,39 @@ public class AppInfoServiceImpl implements AppInfoService{
 		return appInfoMapper.updateAppInfo(appInfo);
 	}
 
+	/**
+	 * 根据id获取apk名称
+	 * @param id
+	 * @return
+	 */
 	public AppInfo getAppInfo(Integer id) {
-		// TODO Auto-generated method stub
 		return appInfoMapper.getAppInfo(id);
 	}
 
+	
+
+	@Override
 	public Integer deleteAppInfo(Integer id) {
-		// TODO Auto-generated method stub
 		return appInfoMapper.deleteAppInfo(id);
 	}
+
+	@Override
+	public AppInfo getAppInfoById(Integer id) {
+		return appInfoMapper.getAppInfoById(id);
+	}
+
+	@Override
+	public Integer updateAppVersion(AppInfo appInfo) {
+		// TODO Auto-generated method stub
+		return appInfoMapper.updateAppVersion(appInfo);
+	}
+
+	@Override
+	public Integer upAndDown(AppInfo appInfo) {
+		// TODO Auto-generated method stub
+		return appInfoMapper.upAndDown(appInfo);
+	}
+	
+
 	
 }

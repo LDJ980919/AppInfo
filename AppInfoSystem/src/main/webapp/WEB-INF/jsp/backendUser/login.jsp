@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>app开发者登陆系统 </title>
+    <title>app后台管理登陆系统 </title>
 
     <!-- Bootstrap core CSS -->
 
@@ -49,20 +49,21 @@
                     <form action="<%=request.getContextPath() %>/backendUserSave" method="post">
                         <h1>欢迎后台管理者登陆</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Username" required="" />
+                            <input type="text" class="form-control" placeholder="Username" required="" name="userCode"/>
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Password" required="" />
+                            <input type="password" class="form-control" placeholder="Password" required=""  name="userPassword"/>
                         </div>
                         <div>
-                            <a class="btn btn-default submit" href="index.html">登陆</a>
-                            <a class="reset_pass" href="#">忘记密码?</a>
+                             <input class="btn btn-default submit" type="submit" value="登陆">&nbsp;&nbsp;&nbsp;
+                            <input class="btn btn-default submit" type="reset" value="重置">
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator">
 
                             <p class="change_link">新的管理者?
-                                <a href="#toregister" class="to_register"> 注册 </a>
+                             <a href="<%=request.getContextPath() %>/backendRegist" class="to_register"> 注册 </a>
+                             
                             </p>
                             <div class="clearfix"></div>
                             <br />

@@ -30,10 +30,12 @@ import com.alibaba.fastjson.JSON;
 
 import cn.appsys.pojo.AppCategory;
 import cn.appsys.pojo.AppInfo;
+import cn.appsys.pojo.AppVersion;
 import cn.appsys.pojo.DataDictionary;
 import cn.appsys.pojo.DevUser;
 import cn.appsys.service.AppCategoryService;
 import cn.appsys.service.AppInfoService;
+import cn.appsys.service.AppVersionService;
 import cn.appsys.service.DataDictionaryService;
 import cn.appsys.service.UserService;
 
@@ -51,6 +53,8 @@ public class DevUserController {
 	private AppCategoryService appCategoryService;
 	@Resource
 	private AppInfoService appInfoService;
+	@Resource
+	private AppVersionService appVersionService;
 	
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public String getIndex(){
@@ -194,7 +198,13 @@ public class DevUserController {
 		
 	}
 	
-	
+	@RequestMapping(value="/panduandApp",method=RequestMethod.POST)
+	@ResponseBody
+	public String panduandApp(Integer id,HttpSession session,Model m){
+		AppInfo appInfo=appInfoService.getAppInfo(id);
+		Integer status=appInfo.getStatus();
+		return JSON.toJSONString(status);
+	}
 	
 	/**
 	 * �޸Ĺ���
@@ -207,7 +217,9 @@ public class DevUserController {
 		int id1=Integer.parseInt(id);
 		log.info("����userupdate����"+id);
 		AppInfo appInfo=appInfoService.getAppInfo(id1);
+		Integer sta=appInfo.getStatus();
 		m.addAttribute("appInfo", appInfo);
+		m.addAttribute("sta", sta);
 		
 		
 		DataDictionary dataDictionary=new DataDictionary();
@@ -323,6 +335,36 @@ public class DevUserController {
 			
 			Integer result=appInfoService.deleteAppInfo(id);
 			return JSON.toJSONString(result);
+		}
+		
+		/**
+		 * 
+		 */
+		@RequestMapping(value="/showApp{id}",method=RequestMethod.GET)
+		public String checkAppInfo(@PathVariable Integer id,Model m){
+			AppInfo appInfo = appInfoService.getAppInfoById(id);
+			m.addAttribute("appInfo", appInfo);
+			List<AppVersion> appList = appVersionService.getAppVersionListById(id);
+			log.info("====================================================>"+appList);
+			m.addAttribute("appList", appList);
+			return "appInfo/showApp";
+		}
+		
+		@RequestMapping(value="/upAndDown{id}",method=RequestMethod.GET)
+		public String upAndDown(@PathVariable Integer id,Model m){
+			AppInfo appInfo=appInfoService.getAppInfo(id);
+			Integer status=appInfo.getStatus();
+			AppInfo appInfo1=new AppInfo();
+			appInfo1.setId(id);
+			if(status==4){
+				appInfo1.setStatus(5);
+			}
+			if(status==2 ||status==5){
+				appInfo1.setStatus(4);
+				
+			}
+			Integer i=appInfoService.upAndDown(appInfo1);
+			return "redirect:/sys/devuser/appInfo";
 		}
 	}
 

@@ -38,7 +38,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>新增APP基础信息</h2>
+                                    <h2>修改APP基础信息</h2>
                                     
                                     <div class="clearfix"></div>
                                 </div>
@@ -92,7 +92,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             	<select id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="flatformId">
-                                            		<option>--请选择--</option>
+                                            		<option value="0">--请选择--</option>
                                             		<c:forEach items="${status}" var="sta">
 	                                            		<c:if test="${sta.id==appInfo.flatformId}">
 	                                            		<option value="${sta.id}" selected="selected">${sta.valueName}</option>
@@ -109,7 +109,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="middle-name" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="categoryLevel1" onchange="add1(this.value);">
-                                            		<option>--请选择--</option>
+                                            		<option value="0">--请选择--</option>
                                             		<c:forEach items="${list1}" var="list">
                                             			<c:if test="${list.id==appInfo.categoryLevel1}">
 	                                            		<option value="${list.id}"  selected="selected">${list.categoryName}</option>
@@ -127,7 +127,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                              <select id="middle-name1" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="categoryLevel2" onchange="add2(this.value);">
-                                            	<option>--请选择--</option>
+                                            	<option value="0">--请选择--</option>
                                             		<c:forEach items="${categoryList}" var="list">
                                             			<c:if test="${list.id==appInfo.categoryLevel2}">
 	                                            		<option value="${list.id}"  selected="selected">${list.categoryName}</option>
@@ -146,7 +146,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="middle-name2" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="categoryLevel3">
-                                            		<option>--请选择--</option>
+                                            		<option value="0">--请选择--</option>
                                             		<c:forEach items="${categoryList}" var="list">
                                             			<c:if test="${list.id==appInfo.categoryLevel3}">
 	                                            		<option value="${list.id}"  selected="selected">${list.categoryName}</option>
@@ -164,8 +164,14 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">APP状态 <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="hidden" name="status" value="1"/>
+                                            <c:if test="${sta==1 }">
+                                           
                                                 <span>待审核</span>
+                                             </c:if>
+                                             <c:if test="${sta==3 }">
+                                            
+                                                <span>审核未通过</span>
+                                             </c:if>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -191,9 +197,14 @@
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <c:if test="${sta==3 }">
+                                            <input type="hidden" name="status" value="1"/>
+                                             <input  type="submit" class="btn btn-primary" value="保存并再次提交审核">
+                                             </c:if>
+                                             <input type="hidden" name="status" value="${sta }"/>
                                             <input  type="submit" class="btn btn-primary" value="保存">
                                               
-                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/appInfo">返回</a></button>
+                                                <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/index">返回</a></button>
                                             </div>
                                         </div>
 
@@ -339,7 +350,7 @@ function add1(val){
 
 
 		   success:function(data){
-
+			if(val!=0){
 		   var secondCategoryObj = document.getElementById("middle-name1");
 		   var secondCategoryObj2 = document.getElementById("middle-name2");
 		   secondCategoryObj2.innerHTML="";
@@ -359,6 +370,12 @@ function add1(val){
 		        }
 		        }
 
+		   }else{
+			   var secondCategoryObj = document.getElementById("middle-name1");
+			   var secondCategoryObj2 = document.getElementById("middle-name2");
+			   secondCategoryObj2.innerHTML="";
+			   secondCategoryObj.innerHTML="";
+		   }
 		   }
 		   });  
 		   }

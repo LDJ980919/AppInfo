@@ -1,6 +1,6 @@
 package cn.appsys.service;
 /**
- * 管理员登入实现层
+ * 锟斤拷锟斤拷员锟斤拷锟斤拷实锟街诧拷
  * @author Administrator
  *
  */
@@ -19,16 +19,16 @@ public class BackendUserServiceImpl implements BackendUserService {
 	@Resource
 	private BackendUserMapper backendUserMapper;
 	/**
-	 * 管理员登入
+	 * 锟斤拷锟斤拷员锟斤拷锟斤拷
 	 * @param userCode
 	 * @param userPassword
 	 * @return
 	 */
-	public Integer getBacUserLogin(BackendUser user) {
+	public BackendUser getBacUserLogin(BackendUser user) {
 		return backendUserMapper.getBacUserLogin(user);
 	}
 	/**
-	 * 修改管理员信息
+	 * 锟睫改癸拷锟斤拷员锟斤拷息
 	 * @param user
 	 * @return
 	 */
@@ -36,7 +36,7 @@ public class BackendUserServiceImpl implements BackendUserService {
 		return backendUserMapper.updateBacUser(user);
 	}
 	/**
-	 * 删除管理员信息
+	 * 删锟斤拷锟斤拷锟斤拷员锟斤拷息
 	 * @param id
 	 * @return
 	 */
@@ -44,12 +44,17 @@ public class BackendUserServiceImpl implements BackendUserService {
 		return backendUserMapper.deleteBacUser(id);
 	}
 	/**
-	 * 查询所有管理员信息
+	 * 锟斤拷询锟斤拷锟叫癸拷锟斤拷员锟斤拷息
 	 * @param user
 	 * @return
 	 */
 	public List<BackendUser> getBacUserList(BackendUser user) {
 		return backendUserMapper.getBacUserList(user);
+	}
+	@Override
+	public Integer addUser(BackendUser user) {
+		// TODO Auto-generated method stub
+		return backendUserMapper.addUser(user);
 	}
 
 }

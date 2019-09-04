@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>app开发者主页! |</title>
+<title>app后台管理者主页! |</title>
 
 <!-- Bootstrap core CSS -->
 
@@ -56,31 +56,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <script type="text/javascript" src="<%=request.getContextPath() %>/static/js/jquery-1.12.4.min.js"></script>
-        <style type="text/css">
-        .ul1{
-        list-style: none;
-        }
-        #btn1{
-            float: left;
-            margin-right: 20px;
-            position: relative;
-            
-        }
-        .ul1{
-            position: absolute;
-           
-            display: none;
-            width:120px;
-            height:140px;
-            background-color:#26b99a;
-            z-index:10;
-            font-size:16px;
-           
-        }
-        .ul1 li{
-       
-        }
-        </style>
+        
 </head>
 <body>
 	
@@ -89,7 +65,7 @@
 					<div class="x_panel">
 						<div class="x_title">
 							<h2>
-								APP信息管理维护 <small>${user.devName}用户，你可以通过此页面来维护和修改您的app信息</small>
+								APP审核列表 <small>${user.userName}用户，你可以通过此页面来对app信息进行审核工作</small>
 							</h2><div class="clearfix"></div>
 						</div>
 						<div class="x_content">
@@ -115,7 +91,7 @@
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 										<select id="appStatus"  class="form-control" name="status">
 											<c:if test="${statusList != null}">
-												<option value="0">--请选择--</option>
+												<option value="">--请选择--</option>
 												<c:forEach items="${statusList }" var="statu">
 													<c:if test="${statu.id==appInfo.status}">
 													<option  value="${statu.id}" selected="selected">${statu.valueName}</option>
@@ -216,7 +192,7 @@
 						<div class="x_panel">
 							<div class="x_content">
 
-								<a href="javascript:add();"  class="btn btn-success">新增APP基础信息</a>
+								
 
 								<table
 									class="table table-striped responsive-utilities jambo_table bulk_action">
@@ -229,7 +205,7 @@
 											<th class="column-title">所属分类(一级分类、二级分类、三级分类)</th>
 											<th class="column-title">状态</th>
 											<th class="column-title">下载次数</th>
-											<th class="column-title">版本号</th>
+											<th class="column-title">最新版本号</th>
 											<th class="column-title no-link last"><span class="nobr">操作</span>
 											</th>
 											<th class="bulk-actions" colspan="7"><a class="antoo"
@@ -241,6 +217,7 @@
 
 									<tbody id="tbody1">
 										<c:forEach items="${appList}" var="app">
+										<c:if test="${app.status==1 }">
 											<tr class="even pointer">
 												<td class=" ">${app.softwareName}</td>
 												<td class=" ">${app.APKName}</td>
@@ -253,34 +230,15 @@
 												<c:if test="${version.id==app.versionId }">
 												<td class=" ">${version.versionNo}</td>
 												</c:if>
-												
-												
 												</c:forEach>
 												<c:if test="${null==app.versionId }">
 												<td class=" "></td>
 												</c:if>
-												
-												<td class=" "><div  id="btn1"><button >操作 <span class="fa fa-chevron-down"></span></button>
-                                   								 <ul  class="ul1">
-                                   								 	<c:if test="${app.status==4 }">
-	                                      						  	<li><a href="javascript:upAndDown(${app.id });" style="color:#fff;">下架</a></li>
-	                                      							</c:if> 
-	                                      							<c:if test="${app.status==2||app.status==5 }">
-	                                      						  	<li><a href="javascript:upAndDown(${app.id });" style="color:#fff;">上架</a></li>
-	                                      							</c:if>
-	                                        						<li><a href="javascript:addVersion(${app.id });"  style="color:#fff;">新增版本</a>
-	                                       							 </li>
-							                                        <li><a href="javascript:updateVersion(${app.id });"  style="color:#fff;">修改版本</a>
-							                                        </li>
-							                                        <li><a href="javascript:update(${app.id });" id="delete" style="color:#fff;">修改</a>
-							                                        </li>
-							                                        <li><a href="javascript:show(${app.id });"  style="color:#fff;">查看</a>
-							                                        </li>
-							                                        <li><a href="javascript:deleted(${app.id });"  style="color:#fff;">删除</a>
-							                                        </li>
-                                    							</ul></div>
+												<td class=" "><div ><button ><a href="javascript:check(${app.id });">审核</a> </button>
+                                   								</div>
                                     </td>
 											</tr>
+											</c:if>
 										</c:forEach>
 									</tbody>
 
@@ -310,7 +268,7 @@
 		$("#form11").submit(function(){
 			var data =$(this).serialize();
 			$.ajax({
-				url:"<%=request.getContextPath() %>/sys/devuser/appInfo",
+				url:"<%=request.getContextPath() %>/sys/backendUser/appInfo",
 				data:data,
 				type:"GET",
 				dataType:"html",
@@ -329,41 +287,37 @@
 			$(this).children('ul').hide();
 		});
 		
-		
-		/* 修改 */
-		 function update(id){
+		/* 审核 */
+		function check(id){
 			 $.ajax({
-					url:"<%=request.getContextPath() %>/sys/devuser/panduandApp",
+					url:"<%=request.getContextPath() %>/sys/backendUser/check",
 					data:{"id":id},
 					type:"POST",
 					dataType:"text",
 					success:function(data){
-						
-						if(data=="1"||data=="3"){
-							$("#main1").load("<%=request.getContextPath() %>/sys/devuser/updateApp"+id);
-						}else if(data=="2"){
+						console.log(data)
+						if(data=="1"){
 							
-							alert("该app的状态为【审核通过】");
-						}else if(data=="4"){
 							
-							alert("该app的状态为【已上架】");
-						}else if(data=="5"){
+							$("#main1").load("<%=request.getContextPath() %>/sys/backendUser/showApp"+id);
+						}else{
 							
-							alert("该app的状态为【已下架】");
+							alert("该app应用没有上传最新版本，不能进行审核操作");
 						}
 						
 					}
 					
 				});
-		
+		}
+		/* 修改 */
+		 function update(id){
+			 $("#main1").load("<%=request.getContextPath() %>/sys/devuser/updateApp"+id); 
 		 }
 		function addVersion(appId){
 			$("#main1").load("<%=request.getContextPath() %>/sys/appVersion/addAppVersion"+appId);
 		}
 		/*修改版本信息  */
 		function updateVersion(appId){
-			
-			
 			$("#main1").load("<%=request.getContextPath() %>/sys/appVersion/upAppVersion"+appId);
 		}
 		/* 展示app的一些信息  */
@@ -404,47 +358,48 @@
 		 }
 		 
 	
-		function add1(val){
-			  
-			   $.ajax({
-				   type:'POST',
-				   dataType:'text',//不写这个会提示下载或者改为json也是
-				   url:'${pageContext.request.contextPath}/sys/devuser/ajaxFindSecondType',
-				   data:{
-				   val : val
-				   }, 
+
+			function add1(val){
+				  
+				   $.ajax({
+					   type:'POST',
+					   dataType:'text',//不写这个会提示下载或者改为json也是
+					   url:'${pageContext.request.contextPath}/sys/devuser/ajaxFindSecondType',
+					   data:{
+					   val : val
+					   }, 
 
 
-				   success:function(data){
-					if(val!=0){
-				   var secondCategoryObj = document.getElementById("appCategoryName2");
-				   var secondCategoryObj2 = document.getElementById("appCategoryName3");
-				   secondCategoryObj2.innerHTML="";
-				     secondCategoryObj.innerHTML = "<option value='0'>--请选择--</option>";
-				  	 //解析json为数组
-				        var data = eval("("+data+")");     
-				        var dataList = data.tasks;
-				        if (dataList!= null) { //如果没有这一步，js会报length null之类的
-				        for(var i=0;i<dataList.length;i++)//遍历
-				        {
-				       	 var AppCategory = dataList[i]; 
-				   		var id = AppCategory.id;
-				   			var categoryName = AppCategory.name;
-				             //进行添加到标签里
-				            secondCategoryObj.innerHTML += "<option value='"+id+"'>"+categoryName+"</option>";
-				            
-				        }
-				        }
-
-				   }else{
+					   success:function(data){
+						if(val!=0){
 					   var secondCategoryObj = document.getElementById("appCategoryName2");
 					   var secondCategoryObj2 = document.getElementById("appCategoryName3");
 					   secondCategoryObj2.innerHTML="";
-					   secondCategoryObj.innerHTML="";
-				   }
-				   }
-				   });  
-				   }
+					     secondCategoryObj.innerHTML = "<option value='0'>--请选择--</option>";
+					  	 //解析json为数组
+					        var data = eval("("+data+")");     
+					        var dataList = data.tasks;
+					        if (dataList!= null) { //如果没有这一步，js会报length null之类的
+					        for(var i=0;i<dataList.length;i++)//遍历
+					        {
+					       	 var AppCategory = dataList[i]; 
+					   		var id = AppCategory.id;
+					   			var categoryName = AppCategory.name;
+					             //进行添加到标签里
+					            secondCategoryObj.innerHTML += "<option value='"+id+"'>"+categoryName+"</option>";
+					            
+					        }
+					        }
+
+					   }else{
+						   var secondCategoryObj = document.getElementById("appCategoryName2");
+						   var secondCategoryObj2 = document.getElementById("appCategoryName3");
+						   secondCategoryObj2.innerHTML="";
+						   secondCategoryObj.innerHTML="";
+					   }
+					   }
+					   });  
+					   }
 				 
 		function add2(val){
 			  

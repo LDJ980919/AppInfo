@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- Bootstrap core CSS -->
+
+    <link href="<%=request.getContextPath() %>/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="<%=request.getContextPath() %>/static/fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/static/css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="<%=request.getContextPath() %>/static/css/custom.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/static/css/icheck/flat/green.css" rel="stylesheet">
+
+
+    <script src="<%=request.getContextPath() %>/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/static/js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+	<div class="x_panel">
+                                <div class="x_title">
+                                    <h2>历史版本列表</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>软件名称</th>
+                                                <th>版本号</th>
+                                                <th>版本大小(单位:Mb)</th>
+                                                <th>发布状态</th>
+                                                <th>APK文件下载</th>
+                                                <th>最新更新时间</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                       	 <c:forEach items="${appList }" var="app">
+                                            <tr>
+                                                <td>${app.softwareName }</td>
+                                                <td>${app.versionNo }</td>
+                                                <td>${app.versionSize }</td>
+                                                <td>${app.status }</td>
+                                                <td>${app.downloadLink }</td>
+                                                <td>${app.modifyDate }</td>
+                                           	 </tr>
+                                          </c:forEach>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>新增版本信息</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <br />
+                                    <form id="demo-form2" class="form-horizontal form-label-left" action="javascript:;" method="post" enctype="multipart/form-data">
+											<input type="hidden" name="appId" value="${appId }"/>
+											<input type="hidden"  name="id" value="${appVersion.id }"/>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">版本号 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input  type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" name="versionNo" value="${appVersion.versionNo }">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">版本大小 <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input  type="text" id="last-name" name="versionSize" required="required" class="form-control col-md-7 col-xs-12" value="${appVersion.versionSize }">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">发布状态 <span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <span class="required">预发布</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">版本简介<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="versionInfo" value="${appVersion.versionInfo }">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">APK文件<span class="required">*</span></label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                           <c:if test="${appVersion.apkFileName!=null }">
+                                               <input type="text" name="apkFileName" value="${appVersion.apkFileName }"/>
+                                              </c:if>
+                                              <c:if test="${appVersion.apkFileName==null }">
+                                                <span class="date-picker form-control col-md-7 col-xs-12" >暂无apk</span>
+                                              </c:if>
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="file" name="attachs" value="${appVersion.apkFileName }">
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                                <button type="submit" class="btn btn-primary">保存</button>
+                                                   <button  class="btn btn-success"><a href="<%=request.getContextPath() %>/sys/devuser/index">返回</a></button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+          <script type="text/javascript">
+          	$("form").submit(function(){
+          		var data = $(this).serialize();
+          		var data = new FormData(document.getElementById("demo-form2"));
+          		$.ajax({
+          			url:"<%=request.getContextPath() %>/sys/appVersion/updateAppVersionSave",
+          			data:data,
+          			type:"post",
+          			dataType:"text",
+          			processData:false,
+    				contentType:false,
+          			success:function(data){
+          				
+          				if(data == "1"){
+          					alert("修改成功!");
+          					$("#main1").load("<%=request.getContextPath() %>/sys/devuser/appInfo");
+          				}else{
+          					alert("修改失败");
+          				}
+          			}
+          		});
+          	});
+          </script>
+</body>
+</html>

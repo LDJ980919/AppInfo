@@ -8,5 +8,5 @@ import cn.appsys.pojo.DataDictionary;
 
 @Repository("dataDictionaryMapper")
 public interface DataDictionaryMapper {
-public List<DataDictionary> getDataDictionary(DataDictionary dataDictionary);
+	public List<DataDictionary> getDataDictionary(DataDictionary dataDictionary);
 }

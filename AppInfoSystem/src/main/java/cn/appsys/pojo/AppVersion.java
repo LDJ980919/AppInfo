@@ -59,7 +59,27 @@ public class AppVersion {
 	 * APK文件名称
 	 */
 	private String apkFileName;
+	/**
+	 * 软件名称
+	 */
+	private String softwareName;
+	/**
+	 * 状态
+	 */
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getSoftwareName() {
+		return softwareName;
+	}
+	public void setSoftwareName(String softwareName) {
+		this.softwareName = softwareName;
+	}
 	public Integer getId() {
 		return id;
 	}

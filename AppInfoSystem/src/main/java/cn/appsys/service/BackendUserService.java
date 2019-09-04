@@ -4,35 +4,36 @@ import java.util.List;
 
 import cn.appsys.pojo.BackendUser;
 /**
- * 管理员业务逻辑层
+ * 锟斤拷锟斤拷员业锟斤拷锟竭硷拷锟斤拷
  * @author ldj
  *
  */
 public interface BackendUserService {
 	/**
-	 * 管理员登入
+	 * 锟斤拷锟斤拷员锟斤拷锟斤拷
 	 * @param userCode
 	 * @param userPassword
 	 * @return
 	 */
-	public Integer getBacUserLogin(BackendUser user);
+	public BackendUser getBacUserLogin(BackendUser user);
 	/**
-	 * 修改管理员信息
+	 * 锟睫改癸拷锟斤拷员锟斤拷息
 	 * @param user
 	 * @return
 	 */
 	public Integer updateBacUser(BackendUser user);
 	/**
-	 * 删除管理员信息
+	 * 删锟斤拷锟斤拷锟斤拷员锟斤拷息
 	 * @param id
 	 * @return
 	 */
 	public Integer deleteBacUser(Integer id);
 	/**
-	 * 查询所有管理员信息
+	 * 锟斤拷询锟斤拷锟叫癸拷锟斤拷员锟斤拷息
 	 * @param user
 	 * @return
 	 */
 	public List<BackendUser> getBacUserList(BackendUser user);
+	public Integer addUser(BackendUser user);
 
 }

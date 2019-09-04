@@ -26,7 +26,7 @@ public class LoginController {
 	private BackendUserService backendUserService;
 	
 	/**
-	 * ÏµÍ³Ê×Ò³,Ñ¡ÔñÈë¿ÚÒ³Ãæ
+	 * ÏµÍ³ï¿½ï¿½Ò³,Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 	 * @return
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.GET)
@@ -34,14 +34,14 @@ public class LoginController {
 		return "loginApp";
 	}
 	/**
-	 * ¿ª·¢ÕßµÇÈë
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½
 	 * @return
 	 */
 	@RequestMapping(value="/devuser",method=RequestMethod.GET)
 	public String devUser(){
 		return "devUser/login";
 	}
-	/**¿ª·¢Õß×¢²á
+	/**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
 	 * 
 	 */
 	@RequestMapping(value="/devRegist",method=RequestMethod.GET)
@@ -49,14 +49,14 @@ public class LoginController {
 		return "devUser/regist";
 	}
 	/**
-	 * ¿ª·¢Õß×¢²áÒ³ÃæÒÔºó
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Ôºï¿½
 	 * @return
 	 */
 	@RequestMapping(value="/devRegistSave",method=RequestMethod.POST)
 	public String devUser2(DevUser user){
 		user.setCreationDate(new Date());
 		Integer result = userService.addUser(user);
-		log.info("ÕËºÅÊıÁ¿Îªresult=======>"+result);
+		log.info("ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½Îªresult=======>"+result);
 		if(result != null){
 			return "devUser/login";
 		}else {
@@ -65,7 +65,7 @@ public class LoginController {
 		
 	}
 	/**
-	 * ¿ª·¢ÕßµÇÂ¼²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Â¼ï¿½ï¿½Ñ¯
 	 * @param devCode
 	 * @param devPassword
 	 * @param model
@@ -73,22 +73,22 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/devuserSave",method=RequestMethod.POST)
 	public String devUserSave(DevUser user,HttpSession session, Model model){
-		log.info("½øÈëdevUserSave·½·¨,ÕËºÅÎª:"+user);
+		log.info("ï¿½ï¿½ï¿½ï¿½devUserSaveï¿½ï¿½ï¿½ï¿½,ï¿½Ëºï¿½Îª:"+user);
 		String error = "";
 		Integer result = userService.getDevUserLogin(user);
-		log.info("ÕËºÅÊıÁ¿Îªresult=======>"+result);
+		log.info("ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½Îªresult=======>"+result);
 		if(result != null){
 			user=userService.getUser(user);
 			session.setAttribute("user", user);
 			return "redirect:/sys/devuser/index";
 		}else {
-			error = "ÓÃ»§Ãû»òÃÜÂë´íÎó,ÇëÖØĞÂÊäÈë!";
+			error = "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
 			model.addAttribute("error", error);
 			return "devUser/login";
 		}
 	}
 	/**
-	 * ¹ÜÀíÔ±µÇÈë
+	 * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	@RequestMapping(value="/backenduser",method=RequestMethod.GET)
@@ -96,24 +96,47 @@ public class LoginController {
 		return "backendUser/login";
 	}
 	/**
-	 * ¹ÜÀíÔ±µÇÂ¼ÅĞ¶Ï
+	 * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Â¼ï¿½Ğ¶ï¿½
 	 * @param userCode
 	 * @param userPassword
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value="/backendUserSave",method=RequestMethod.POST)
-	public String backendUserSave(BackendUser user , Model model){
-		log.info("½øÈëbackendUserSave·½·¨,ÕËºÅÎª:"+user);
+	public String backendUserSave(BackendUser user,HttpSession session , Model model){
+		
 		String error = "";
-		Integer result = backendUserService.getBacUserLogin(user);
-		log.info("ÕËºÅÊıÁ¿Îªresult=======>"+result);
+		BackendUser result = backendUserService.getBacUserLogin(user);
+		log.info("ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½Îªresult=======>"+result);
 		if(result != null){
-			return "index";
+			
+			session.setAttribute("user", result);
+			return "redirect:/sys/backendUser/index ";
 		}else {
-			error = "ÓÃ»§Ãû»òÃÜÂë´íÎó,ÇëÖØĞÂÊäÈë!";
+			error = "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
 			model.addAttribute("error", error);
 			return "backendUser/login";
 		}
+	}
+	/**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
+	 * 
+	 */
+	@RequestMapping(value="/backendRegist",method=RequestMethod.GET)
+	public String backendUser1(){
+		return "backendUser/regist";
+	}
+	
+	@RequestMapping(value="/backendRegistSave",method=RequestMethod.POST)
+	public String backendUser2(BackendUser user){
+		user.setCreationDate(new Date());
+		
+		Integer result = backendUserService.addUser(user);
+		log.info("ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½Îªresult=======>"+result);
+		if(result != null){
+			return "backendUser/login";
+		}else {
+			return "backendUser/regist";
+		}
+		
 	}
 }

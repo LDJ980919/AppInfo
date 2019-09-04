@@ -8,6 +8,16 @@
 		<result column="categoryLevel2Name" property="appCategoryName2"/>
 		<result column="categoryLevel3Name" property="appCategoryName3"/>
 	</resultMap>
+	<!-- 根据id查询app -->
+	<select id="getAppInfoById" parameterType="int" resultMap="app_idc">
+		select *,
+		(select valueName from data_dictionary d where  a.status=d.id AND d.typeCode='1') as statusName,
+		(select valueName from data_dictionary d where  a.flatformId=d.id AND d.typeCode='2') as flatformName,
+		(select categoryName from app_category c where  c.id=a.categoryLevel1) as categoryLevel1Name,
+		(select categoryName from app_category c where  c.id=a.categoryLevel2) as categoryLevel2Name,
+		(select categoryName from app_category c where  c.id=a.categoryLevel3) as categoryLevel3Name
+		from app_info a where id = #{id}
+	</select>
 	<!-- 查询 -->
 	<select id="getAppInfoList" parameterType="AppInfo" resultMap="app_idc">
 		select *,
@@ -67,13 +77,27 @@
 			logoPicPath = #{logoPicPath}
 		where id = #{id}
 	</update>
-	
+
 	<!-- 查询该app的信息 -->
 	<select id="getAppInfo" resultType="AppInfo" parameterType="int">
 		select * from app_info where id=#{id}
 	</select>
+
 	<!--删除app的信息  -->
 	<delete id="deleteAppInfo" parameterType="int">
 		delete from app_info where id = #{id}
 	</delete>
+<!-- 修改app的版本信息 -->
+<update id="updateAppVersion" parameterType="AppInfo">
+update app_info
+		set versionId=#{versionId}
+		where id=#{id}
+</update>
+
+<!-- 改变app的状态 -->
+<update id="upAndDown" parameterType="AppInfo">
+update app_info
+		set status=#{status}
+		where id=#{id}
+</update>
 </mapper>

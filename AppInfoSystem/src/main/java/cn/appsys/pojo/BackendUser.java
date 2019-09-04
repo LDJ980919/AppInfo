@@ -30,7 +30,7 @@ public class BackendUser {
 	/**
 	 * 创建时间
 	 */
-	private Date creatuibDate;
+	private Date creationDate;
 	/**
 	 * 更新�?
 	 */
@@ -74,11 +74,11 @@ public class BackendUser {
 	public void setCreatedBy(int createdBy) {
 		this.createdBy = createdBy;
 	}
-	public Date getCreatuibDate() {
-		return creatuibDate;
+	public Date getCreationDate() {
+		return creationDate;
 	}
-	public void setCreatuibDate(Date creatuibDate) {
-		this.creatuibDate = creatuibDate;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 	public int getModifyBy() {
 		return modifyBy;

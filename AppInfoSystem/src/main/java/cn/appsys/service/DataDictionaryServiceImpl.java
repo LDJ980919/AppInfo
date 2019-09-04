@@ -17,7 +17,6 @@ public class DataDictionaryServiceImpl implements DataDictionaryService {
 	private DataDictionaryMapper dataDictionaryMapper;
 	
 	public List<DataDictionary> getDataDictionary(DataDictionary dataDictionary) {
-		// TODO Auto-generated method stub
 		return dataDictionaryMapper.getDataDictionary(dataDictionary);
 	}
 

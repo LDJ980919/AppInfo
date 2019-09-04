@@ -6,37 +6,46 @@ import org.springframework.stereotype.Repository;
 
 import cn.appsys.pojo.BackendUser;
 
+
+
 /**
- * ¹ÜÀíÔ±µÇÈëÂß¼­²ã
+ * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½
  * @author Administrator
  *
  */
 @Repository("backendUserMapper")
 public interface BackendUserMapper {
 	/**
-	 * ¹ÜÀíÔ±µÇÈë
+	 * ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½
 	 * @param userCode
 	 * @param userPassword
 	 * @return
 	 */
-	public Integer getBacUserLogin(BackendUser user);
+	public BackendUser getBacUserLogin(BackendUser user);
 	/**
-	 * ĞŞ¸Ä¹ÜÀíÔ±ĞÅÏ¢
+	 * ï¿½Ş¸Ä¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * @param user
 	 * @return
 	 */
 	public Integer updateBacUser(BackendUser user);
 	/**
-	 * É¾³ı¹ÜÀíÔ±ĞÅÏ¢
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * @param id
 	 * @return
 	 */
 	public Integer deleteBacUser(Integer id);
 	/**
-	 * ²éÑ¯ËùÓĞ¹ÜÀíÔ±ĞÅÏ¢
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ğ¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Ï¢
 	 * @param user
 	 * @return
 	 */
 	public List<BackendUser> getBacUserList(BackendUser user);
+	/**
+	 * ï¿½Ã»ï¿½×¢ï¿½ï¿½
+	 * @param user
+	 * @return
+	 */
+	public Integer addUser(BackendUser user);
+	
 
 }
